@@ -1,4 +1,7 @@
 import React from 'react';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Header from './Header';
 import Footer from './Footer';
 import Recipes from './Recipes';
@@ -8,7 +11,7 @@ import Ingredients from './Ingredients';
 function App() {
   return (
     <div className="App container">
-      
+
       <div className="row">
         <Header/>
       </div>
