@@ -36,8 +36,14 @@ function App() {
       >
         <Header />
       </div>
-      <div className="row d-flex justify-content-center text-center">
-        <div id="recipes-div" className="col-md-3">
+      <div
+        id="main-row"
+        className="row d-flex justify-content-center text-center"
+      >
+        <div
+          id="recipes-div"
+          className="col-md-3 position-relative container-fluid"
+        >
           <h1>Recipes</h1>
 =======
     <div className="App container">
@@ -50,11 +56,17 @@ function App() {
 >>>>>>> footer
           <Recipes />
         </div>
-        <div id="middle-div" className="col-md-6">
+        <div
+          id="middle-div"
+          className="col-md-3 position-relative container-fluid"
+        >
           <h1>Middle</h1>
           <Recipe />
         </div>
-        <div id="ingredients-div" className="col-md-3">
+        <div
+          id="ingredients-div"
+          className="col-md-3 position-relative container-fluid"
+        >
           <h1>Ingredients</h1>
           <Ingredients />
         </div>
