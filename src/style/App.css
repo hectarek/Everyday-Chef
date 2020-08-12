@@ -21,6 +21,14 @@ span {
   margin: 25px;
 }
 
+#main-row {
+  border-style: solid;
+  border-color: black;
+  width: auto;
+  height: auto;
+  margin: 25px;
+}
+
 #header-div {
   border-style: solid;
   border-color: black;
@@ -45,7 +53,8 @@ span {
   border-color: black;
   width: auto;
   height: auto;
-  /* margin: 25px; */
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 #ingredients-div {
