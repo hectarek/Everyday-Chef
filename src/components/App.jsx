@@ -1,20 +1,19 @@
-import React from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import Header from './Header';
-import Footer from './Footer';
-import Recipes from './Recipes';
-import Recipe from './Recipe';
-import Ingredients from './Ingredients';
+import Header from "./Header";
+import Footer from "./Footer";
+import Recipes from "./Recipes";
+import Recipe from "./Recipe";
+import Ingredients from "./Ingredients";
 library.add(fab, fas);
 
 function App() {
   return (
     <div className="App container">
-
       <div className="row">
         <Header />
       </div>
@@ -37,11 +36,9 @@ function App() {
         <Footer />
       </div>
     </div>
-
-
   );
 }
 
 export default App;
 
-// this is a test
+// this is a second test
