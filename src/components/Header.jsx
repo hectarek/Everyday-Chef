@@ -3,6 +3,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import "../style/Header.css";
+
 function Header() {
   return (
     <div className="header">
@@ -11,13 +13,13 @@ function Header() {
         {/*<i className="fab fa-facebook"></i>
         <i className="fab fa-twitter"></i>
         <i className="fab fa-instagram-square"></i> */}
-        <FontAwesomeIcon icon={['fab', 'facebook-square']} size="2.5m" spin />
-        <FontAwesomeIcon icon={['fab', 'twitter']} size="2.5x" />
-        <FontAwesomeIcon icon={['fab', 'instagram']} size="2.5x" />
+        <FontAwesomeIcon icon={['fab', 'facebook-square']} size="2x" />
+        <FontAwesomeIcon icon={['fab', 'twitter']} size="2x" />
+        <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
 
       </div>
-      <div class="head text-center">
-        <h1>Everyday Chef</h1>
+      <div className="head">
+        <h1>Everyday <span className="head1">Chef</span></h1>
       </div>
       <div>
         <form>

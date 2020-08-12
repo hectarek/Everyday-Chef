@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -17,56 +16,22 @@ function App() {
     <div className="App container">
 
       <div className="row">
-=======
-import React from "react";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./../style/App.css";
-import Header from "./Header";
-import Footer from "./Footer";
-import Recipes from "./Recipes";
-import Recipe from "./Recipe";
-import Ingredients from "./Ingredients";
-
-function App() {
-  return (
-    <div className="app-container">
-      <div id="header-div" className="row">
-        <h1 id="logo">
-          Everyday <span>Chef</span>
-        </h1>
->>>>>>> 71125d36953ea61722bb30a2aaf1a66c4405ea20
         <Header />
       </div>
       <div className="row">
-<<<<<<< HEAD
         <div className="col-md-3">
-=======
-        <div id="recipes-div" className="col-md-3">
-          <h1>Recipes</h1>
->>>>>>> 71125d36953ea61722bb30a2aaf1a66c4405ea20
           <Recipes />
         </div>
         <div id="middle-div" className="col-md-6">
           <h1>Middle</h1>
           <Recipe />
         </div>
-<<<<<<< HEAD
-        <div className="col-md-3">
-          <Ingredients />
-        </div>
-      </div>
-
-      <div className="row">
-=======
         <div id="ingredients-div" className="col-md-3">
           <h1>Ingredients</h1>
           <Ingredients />
         </div>
       </div>
       <div id="footer-div" className="row">
-        <h1>Footer</h1>
->>>>>>> 71125d36953ea61722bb30a2aaf1a66c4405ea20
         <Footer />
       </div>
     </div>
