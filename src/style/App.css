@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Playball&display=swap");
+
+body {
+  background-color: white;
+}
+
+#logo {
+  font-family: Playball;
+  color: #092242;
+}
+
+span {
+  color: #d73434;
+}
+
+.app-container {
+  border-style: solid;
+  border-color: #d73434;
+  width: auto;
+  height: auto;
+  margin: 25px;
+}
+
+#header-div {
+  border-style: solid;
+  border-color: black;
+  width: auto;
+  height: auto;
+  margin: 25px;
+}
+
+#recipes-div {
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  width: auto;
+  height: auto;
+  margin-left: 40px;
+}
+
+#middle-div {
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  width: auto;
+  height: auto;
+  /* margin: 25px; */
+}
+
+#ingredients-div {
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  width: auto;
+  height: auto;
+}
+
+#footer-div {
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  width: auto;
+  height: auto;
+  margin: 25px;
+}
