@@ -2,42 +2,41 @@ import React, { useState, useEffect } from 'react';
 
 function Recipe() {
 
-    const [search, setSearch] = useState('');
-    const [query, setQuery] = useState('');
-    const [result, setResults] = useState([]);
+    const [data, setData] = useState('')
 
-    function onSubmit(e) {
-        e.preventDefault();
-        setQuery(search);
-    }
 
     useEffect(() => {
         
         async function getRecipes() {
             try {
                 let response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=pizza`);
-                let result = await response.json();
-                console.log({ result })
-                return result.recipes;
+                let data = await response.json();
+                let result = await data.recipes;
+                console.log({ result });
+
+                setData(result[2])
+                return data.recipes;
             } catch (error) {
                 console.log(error);
             }
         }
     
-        if (query !== "") {
-            getRecipes();
-        }
+        // Add this so that you dont get random api calls when the box is empty
+        // if (query !== "") {
+        //     getRecipes();
+        // }
 
-    }, [query]);
+        getRecipes();
+
+    }, []);
 
     
 
   return (
     <div className="recipe">
-        <h2 
-            className="recipe-title"
-            value={search}
-            >a</h2>
+        <h3>Dinner Ideas</h3>
+        <h2 className="recipe-title">{data.title}</h2>
+        <img src={data.image_url} alt="pizza"/>
     </div>
   );
 }
