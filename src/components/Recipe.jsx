@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Recipe() {
 
-    async function getRecipes() {
-        let response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=pizza`);
-        let data = await response.json();
-        return data.recipes;
+    const [search, setSearch] = useState('');
+    const [query, setQuery] = useState('');
+    const [result, setResults] = useState([]);
+
+    function onSubmit(e) {
+        e.preventDefault();
+        setQuery(search);
     }
 
-    async function getRecipeTitle(i) {
-        let recipe = await getRecipes();
-        return recipe[i].title;
+    useEffect(() => {
         
-    }
+        async function getRecipes() {
+            try {
+                let response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=pizza`);
+                let result = await response.json();
+                console.log({ result })
+                return result.recipes;
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    
+        if (query !== "") {
+            getRecipes();
+        }
+
+    }, [query]);
+
+    
 
   return (
     <div className="recipe">
-        <h2 className="recipe-title">{getRecipeTitle(3)}</h2>
+        <h2 
+            className="recipe-title"
+            value={search}
+            >a</h2>
     </div>
   );
 }
