@@ -12,9 +12,20 @@ function Header() {
         {/*<i className="fab fa-facebook"></i>
         <i className="fab fa-twitter"></i>
         <i className="fab fa-instagram-square"></i> */}
-        <FontAwesomeIcon icon={["fab", "facebook-square"]} size="2x" />
-        <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" />
-        <FontAwesomeIcon icon={["fab", "instagram"]} size="2x" />
+        <div
+          id="icon-spacing"
+          className="row d-flex justify-content-center text-center"
+        >
+          <div id="icon-1">
+            <FontAwesomeIcon icon={["fab", "facebook-square"]} size="2x" />
+          </div>
+          <div id="icon-2">
+            <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" />
+          </div>
+          <div id="icon-3">
+            <FontAwesomeIcon icon={["fab", "instagram"]} size="2x" />
+          </div>
+        </div>
       </div>
       <div className="head text-center">
         <h1 id="logo">
