@@ -1,9 +1,8 @@
-
-import React from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import "../style/Header.css";
 
 function Header() {
@@ -13,7 +12,7 @@ function Header() {
         {/*<i className="fab fa-facebook"></i>
         <i className="fab fa-twitter"></i>
         <i className="fab fa-instagram-square"></i> */}
-        <FontAwesomeIcon icon={["fab", "facebook-square"]} size="2x" spin />
+        <FontAwesomeIcon icon={["fab", "facebook-square"]} size="2x" />
         <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" />
         <FontAwesomeIcon icon={["fab", "instagram"]} size="2x" />
       </div>
@@ -24,13 +23,13 @@ function Header() {
       </div>
       <div>
         <form>
-          <input type="text" />
-          <button className="btn btn-primary">
+          <input id="input" type="text" placeholder="Search" />
+          {/* <button className="btn btn-primary">
             search
             <span>
               <i className="fas fa-search"></i>
             </span>
-          </button>
+          </button> */}
         </form>
       </div>
     </div>
