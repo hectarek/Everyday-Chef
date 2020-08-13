@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Playball&display=swap");
 
+<<<<<<< HEAD
 .head {
   text-align: center;
   font-family: Playball;
@@ -41,3 +42,16 @@
   text-align: center;
   font-size: 20px;
 }
+=======
+.head{
+    text-align: center;
+    font-family: Playball;
+    
+}
+.head1{
+        color: red;
+}
+#logo{
+    color:blue;
+}
+>>>>>>> container
