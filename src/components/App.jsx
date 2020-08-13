@@ -21,25 +21,42 @@ function App() {
       >
         <Header />
       </div>
-      <div className="row d-flex justify-content-center text-center">
-        <div id="recipes-div" className="col-md-3">
+
+      <div
+        id="main-row"
+        className="row d-flex justify-content-center text-center"
+      >
+        <div
+          id="recipes-div"
+          className="col-md-4 position-relative container-fluid"
+        >
           <h1>Recipes</h1>
+          <hr></hr>
+
           <Recipes />
         </div>
-        <div id="middle-div" className="col-md-6">
-          <h1>Middle</h1>
+        <div
+          id="middle-div"
+          className="col-md-4 position-relative container-fluid"
+        >
+          {/* <h1>Middle</h1> */}
           <Recipe />
         </div>
-        <div id="ingredients-div" className="col-md-3">
-          <h1>Ingredients</h1>
-          <Ingredients />
+        <div
+          id="ingredients-div"
+          className="col-md-4 position-relative container-fluid"
+        >
+          <h1 id="ingH1">Ingredients</h1> <hr></hr>
+          <div class="ing-border">
+            <Ingredients />
+          </div>
         </div>
       </div>
       <div
         id="footer-div"
         className="row d-flex justify-content-center text-center"
       >
-        <h1>Footer</h1>
+        {/* <h1>Footer</h1> */}
         <Footer />
       </div>
     </div>
