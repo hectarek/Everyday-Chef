@@ -9,9 +9,9 @@ function Recipe() {
         
         async function getRecipes() {
             try {
-                let response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=pizza`);
+                let response = await fetch(`https://cors-anywhere.herokuapp.com/https://everydaychef-api.herokuapp.com/recipes?q=beef`);
                 let data = await response.json();
-                let result = await data.recipes;
+                let result = await data;
                 console.log({ result });
 
                 setData(result[2])

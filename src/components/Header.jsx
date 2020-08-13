@@ -1,12 +1,46 @@
+import React, { useState, useEffect } from 'react';
 
-import React from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
 import "../style/Header.css";
 
+function useRecipe(query) {
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `https://api.giphy.com/v1/gifs/search?api_key=ySGo48L37OkJ0cGH1zAfrGr8yobgFMQt&q=${query}&limit=10&offset=0&rating=G&lang=en`
+        );
+        const json = await response.json();
+
+        setResults(
+          json.data.map(item => {
+            return item.images.preview.mp4;
+          })
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (query !== '') {
+      fetchData();
+    }
+  }, [query]);
+
+  return [results, loading];
+}
+
+
 function Header() {
+
+  const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('');
+  const [results, loading] = useRecipe(query);
+
   return (
     <div className="header">
       <div className="icons">
@@ -23,10 +57,17 @@ function Header() {
         </h1>
       </div>
       <div>
-        <form>
-          <input type="text" />
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            setQuery(search);
+          }} >
+          <input 
+            type="text" 
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Search a Dish!" />
           <button className="btn btn-primary">
-            search
+            Search
             <span>
               <i className="fas fa-search"></i>
             </span>
