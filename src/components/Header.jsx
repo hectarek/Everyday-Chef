@@ -13,7 +13,7 @@ function Header() {
         {/*<i className="fab fa-facebook"></i>
         <i className="fab fa-twitter"></i>
         <i className="fab fa-instagram-square"></i> */}
-        <FontAwesomeIcon icon={["fab", "facebook-square"]} size="2x" spin />
+        <FontAwesomeIcon icon={["fab", "facebook-square"]} size="2x" />
         <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" />
         <FontAwesomeIcon icon={["fab", "instagram"]} size="2x" />
       </div>

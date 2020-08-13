@@ -7,24 +7,24 @@ function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    
+
     async function getRecipes() {
       try {
-          let response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=pizza`);
-          let data = await response.json();
-          let results = await data.recipes;
-          console.log({ results });
+        let response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=pizza`);
+        let data = await response.json();
+        let results = await data.recipes;
+        console.log({ results });
 
-          setRecipes(results);
+        setRecipes(results);
 
-          return results;
+        return results;
 
       } catch (error) {
-          console.log(error);
+        console.log(error);
       }
     }
 
-      getRecipes();
+    getRecipes();
 
   }, [])
 

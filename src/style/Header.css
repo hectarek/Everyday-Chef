@@ -3,7 +3,11 @@
 .head{
     text-align: center;
     font-family: Playball;
+    
 }
 .head1{
         color: red;
+}
+#logo{
+    color:blue;
 }

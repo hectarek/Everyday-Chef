@@ -51,7 +51,6 @@ function App() {
         id="footer-div"
         className="row d-flex justify-content-center text-center"
       >
-        <h1>Footer</h1>
         <Footer />
       </div>
     </div>
