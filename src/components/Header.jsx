@@ -1,45 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "../style/Header.css";
 
-function useRecipe(query) {
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          `https://api.giphy.com/v1/gifs/search?api_key=ySGo48L37OkJ0cGH1zAfrGr8yobgFMQt&q=${query}&limit=10&offset=0&rating=G&lang=en`
-        );
-        const json = await response.json();
-
-        setResults(
-          json.data.map(item => {
-            return item.images.preview.mp4;
-          })
-        );
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    if (query !== '') {
-      fetchData();
-    }
-  }, [query]);
-
-  return [results, loading];
-}
-
-
-function Header() {
-
-  const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('');
-  const [results, loading] = useRecipe(query);
+function Header({ search, handleChange, handleSubmit }) {  
 
   return (
     <div className="header">
@@ -58,20 +22,13 @@ function Header() {
       </div>
       <div>
         <form
-          onSubmit={e => {
-            e.preventDefault();
-            setQuery(search);
-          }} >
+          onSubmit={handleSubmit}
+        >
           <input 
             type="text" 
-            onChange={e => setSearch(e.target.value)}
+            value={search}
+            onChange={handleChange}
             placeholder="Search a Dish!" />
-          <button className="btn btn-primary">
-            Search
-            <span>
-              <i className="fas fa-search"></i>
-            </span>
-          </button>
         </form>
       </div>
     </div>

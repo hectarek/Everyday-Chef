@@ -1,39 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import "../style/recipes.css"
 
-function Recipes() {
-
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    
-    async function getRecipes() {
-      try {
-          let response = await fetch(`https://cors-anywhere.herokuapp.com/https://everydaychef-api.herokuapp.com/recipes?q=beef`);
-          let data = await response.json();
-          let results = await data;
-          console.log({ results });
-
-          setRecipes(results);
-
-          return results;
-
-      } catch (error) {
-          console.log(error);
-      }
-    }
-
-      getRecipes();
-
-  }, [])
-
+function Recipes({ recipe }) {
 
   return (
     <div className="recipes">
-
-      {recipes.map(recipe => (
-        <div key={recipe.title} className="recipes-container">
+        <div className="recipes-container">
           <div className="recipes-image-container">
             <img className="recipes-image" src={recipe.image_url} alt={recipe.title} />
           </div>
@@ -42,8 +15,6 @@ function Recipes() {
             <h3 className="recipes-publisher">{recipe.publisher}</h3>
           </div>
         </div>
-      ))}
-
     </div>
   );
 }
