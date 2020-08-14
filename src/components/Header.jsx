@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import "../style/Header.css";
+import { Icon, InlineIcon } from "@iconify/react";
+import chefHat from "@iconify/icons-mdi/chef-hat";
 
 function Header() {
   return (
@@ -12,27 +14,22 @@ function Header() {
         {/*<i className="fab fa-facebook"></i>
         <i className="fab fa-twitter"></i>
         <i className="fab fa-instagram-square"></i> */}
-        <div
-          id="icon-spacing"
-          className="row d-flex justify-content-center text-center"
-        >
-          <div id="icon-1">
-            <FontAwesomeIcon icon={["fab", "facebook-square"]} size="2x" />
-          </div>
-          <div id="icon-2">
-            <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" />
-          </div>
-          <div id="icon-3">
-            <FontAwesomeIcon icon={["fab", "instagram"]} size="2x" />
-          </div>
-        </div>
+        {/* <FontAwesomeIcon icon={["fab", "facebook-square"]} size="2x" />
+        <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" />
+        <FontAwesomeIcon icon={["fab", "instagram"]} size="2x" /> */}
       </div>
       <div className="head text-center">
-        <h1 id="logo">
-          Everyday <span>Chef</span>
-        </h1>
+        <a href="url">
+          <h1 id="logo">
+            <span id="hat">
+              <Icon icon={chefHat} />
+            </span>
+            <br></br>
+            Everyday <span id="chef-red">Chef</span>
+          </h1>
+        </a>
       </div>
-      <div>
+      <div id="input-div">
         <form>
           <input id="input" type="text" placeholder="Search" />
           {/* <button className="btn btn-primary">

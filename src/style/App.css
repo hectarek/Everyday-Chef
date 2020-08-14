@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Playball&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Recursive&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&family=Recursive&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500&family=Recursive&display=swap");
+
 body {
   background-color: white;
 }
@@ -15,12 +20,17 @@ hr {
 
 #ingH1 {
   color: #d73434;
+  font-size: 40px;
+}
+
+#rech1 {
+  font-size: 40px;
 }
 
 #logo {
   font-family: Playball;
   color: #092242;
-  font-size: 80px;
+  font-size: 85px;
 }
 
 span {
@@ -30,7 +40,7 @@ span {
 .app-container {
   border-style: solid;
   border-color: #d73434;
-  border-width: 10px;
+  border-width: 6px;
   width: auto;
   height: auto;
   margin: 30px;
@@ -55,8 +65,9 @@ span {
   border-color: black; */
   width: auto;
   height: auto;
-  margin: 25px;
+  /* margin: 25px; */
   text-align: center;
+  margin-bottom: 5em;
 }
 
 /* .ing-border {
@@ -106,4 +117,58 @@ span {
   width: auto;
   height: auto;
   margin: 25px;
+}
+
+#favorites-div {
+  margin-top: 10em;
+}
+
+#login-div {
+  margin-top: 10em;
+}
+
+/* #login-h1 {
+  font-size: 30px;
+  color: #d73434;
+} */
+
+#login-h1 {
+  font-family: "Baloo Tamma 2", cursive;
+  font-size: 28px;
+  color: #092242;
+  text-decoration: underline;
+}
+
+#favorites-h1 {
+  font-family: "Baloo Tamma 2", cursive;
+  font-size: 28px;
+  color: #092242;
+  text-decoration: underline;
+}
+
+#middle-main-div {
+  /* border-style: solid;
+  border-color: black; */
+}
+
+/* a:hover {
+  color: red;
+} */
+
+a:link {
+  color: #092242;
+  text-decoration: none;
+  background-color: none;
+}
+
+a:visited {
+  color: #092242;
+}
+/* 
+a:active {
+  color: red;
+} */
+
+a:hover {
+  color: #d73434;
 }

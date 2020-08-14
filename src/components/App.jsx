@@ -10,6 +10,14 @@ import Footer from "./Footer";
 import Recipes from "./Recipes";
 import Recipe from "./Recipe";
 import Ingredients from "./Ingredients";
+
+import { Icon, InlineIcon } from "@iconify/react";
+import chefHat from "@iconify/icons-mdi/chef-hat";
+
+// // npm install --save-dev @iconify/react @iconify/icons-clarity
+// import { Icon, InlineIcon } from "@iconify/react";
+import heartSolid from "@iconify/icons-clarity/heart-solid";
+
 library.add(fab, fas);
 
 function App() {
@@ -19,7 +27,40 @@ function App() {
         id="header-div"
         className="row d-flex justify-content-center text-center"
       >
-        <Header />
+        <div
+          id="favorites-div"
+          className="col-md-3 position-relative container-fluid"
+        >
+          <h1 id="favorites-h1">
+            <a href="url">
+              <Icon icon={chefHat} />
+              <br></br>
+              Login
+            </a>
+          </h1>
+          {/* <hr></hr> */}
+        </div>
+
+        <div
+          id="middle-main-div"
+          className="col-md-6 position-relative container-fluid"
+        >
+          <Header />
+        </div>
+
+        <div
+          id="login-div"
+          className="col-md-3 position-relative container-fluid"
+        >
+          <h1 id="favorites-h1">
+            <a href="url">
+              <Icon icon={heartSolid} /> <br></br>
+              Favorites
+            </a>
+          </h1>
+
+          {/* <hr></hr> */}
+        </div>
       </div>
 
       <div
@@ -30,7 +71,7 @@ function App() {
           id="recipes-div"
           className="col-md-4 position-relative container-fluid"
         >
-          <h1>Recipes</h1>
+          <h1 id="rech1">Recipes</h1>
           <hr></hr>
 
           <Recipes />
@@ -66,3 +107,5 @@ function App() {
 export default App;
 
 // this is a third test
+
+// login / user / signup

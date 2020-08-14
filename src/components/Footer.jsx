@@ -20,9 +20,9 @@ function Footer() {
         <div className="outline"></div>
         <div className="para">
           <p>
-            <span>&#169;</span>Copyright Sitename.All Rights Reserved.
+            <span>&#169;</span>Copyright Team Loading... WIN 2020.
           </p>
-          <p>Powered By Create Ecommerce</p>
+          <p>Powered By Carolina Fintech Hub</p>
         </div>
         <hr></hr>
       </footer>

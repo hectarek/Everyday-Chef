@@ -12,26 +12,33 @@
   margin-bottom: 30px;
 }
 
+#chef-red {
+  color: #d73434;
+}
+
 .icons {
   padding-left: 6em;
   padding-right: 6em;
   color: #092242;
-  position: relative;
+  /* border-style: solid;
+  border-color: black; */
+  padding-right: 5em;
+  padding-left: 5em;
 }
 
-#icon-spacing {
+/* #icon-spacing {
   border-style: solid;
   border-color: black;
   padding-left: 60px;
   padding-right: 60px;
-}
+} */
 
-#icon-1 {
+/* #icon-1 {
   border-style: solid;
   border-color: black;
-}
+} */
 
-#icon-2 {
+/* #icon-2 {
   border-style: solid;
   border-color: black;
   margin-left: 30px;
@@ -41,6 +48,10 @@
 #icon-3 {
   border-style: solid;
   border-color: black;
+} */
+
+#hat:hover {
+  color: #d73434;
 }
 
 #input {
@@ -49,15 +60,20 @@
   height: 45px;
   width: 30em;
   padding: 2px 23px 2px 30px;
-  outline: 0;
+  outline: 1px;
   background-color: white;
 }
 
-/* #input:hover,
+#input-div {
+  /* border-style: solid;
+  border-color: black; */
+}
+
+#input:hover,
 #input:focus {
-  border: 1.5px solid #d73434;
-  background-color: white;
-} */
+  /* border: 1.5px solid #092242; */
+  /* background-color: rgb(240, 240, 240); */
+}
 
 #input::placeholder {
   color: #d73434;
@@ -82,16 +98,16 @@
   border-color: black;
 } */
 
-#header-row {
+/* #header-row {
   border-style: solid;
   border-color: black;
   width: 70em;
   height: auto;
-}
+} */
 
 .header {
-  border-style: solid;
-  border-color: black;
-  width: 70em;
+  /* border-style: solid;
+  border-color: black; */
+  /* max-width: 29em; */
   height: auto;
 }
