@@ -1,13 +1,12 @@
-import React from "react";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { fab } from "@fortawesome/free-brands-svg-icons";
+import React from 'react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "../style/Header.css";
 import { Icon, InlineIcon } from "@iconify/react";
 import chefHat from "@iconify/icons-mdi/chef-hat";
 
-function Header() {
+function Header({ search, handleChange, handleSubmit }) {  
+
   return (
     <div className="header">
       <div className="icons">
@@ -29,15 +28,15 @@ function Header() {
           </h1>
         </a>
       </div>
-      <div id="input-div">
-        <form>
-          <input id="input" type="text" placeholder="Search" />
-          {/* <button className="btn btn-primary">
-            search
-            <span>
-              <i className="fas fa-search"></i>
-            </span>
-          </button> */}
+      <div>
+        <form
+          onSubmit={handleSubmit}
+        >
+          <input 
+            type="text" 
+            value={search}
+            onChange={handleChange}
+            placeholder="Search a Dish!" />
         </form>
       </div>
     </div>
