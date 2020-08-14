@@ -39,17 +39,16 @@ span {
 #main-row {
   /* border-style: solid;
   border-color: black; */
-  width: auto;
-  height: auto;
-  margin: 50px;
-  /* min-width: 65em; */
+  width:auto;
+  height:auto;
+  margin: 30px;
+   
 }
-
 #header-div {
   /* border-style: solid;
   border-color: black; */
   width: auto;
-  height: auto;
+  height:auto;
   margin: 25px;
   text-align: center;
 }
@@ -69,7 +68,7 @@ span {
   width: auto;
   height: auto;
   overflow: hidden;
-  max-height: 45em;
+ max-height: 45em;
 }
 
 #middle-div {
@@ -80,7 +79,7 @@ span {
   width: auto;
   height: auto;
   overflow: hidden;
-  max-height: 45em;
+ max-height: 45em;
 }
 
 #ingredients-div {
