@@ -69,7 +69,7 @@ function App() {
       >
         <div
           id="recipes-div"
-          className="col-md-4 position-relative container-fluid"
+          className="col-md-3 position-relative container-fluid"
         >
           <h1 id="rech1">Recipes</h1>
           <hr></hr>
@@ -78,14 +78,14 @@ function App() {
         </div>
         <div
           id="middle-div"
-          className="col-md-4 position-relative container-fluid"
+          className="col-md-6 position-relative container-fluid"
         >
           {/* <h1>Middle</h1> */}
           <Recipe />
         </div>
         <div
           id="ingredients-div"
-          className="col-md-4 position-relative container-fluid"
+          className="col-md-3 position-relative container-fluid"
         >
           <h1 id="ingH1">Ingredients</h1> <hr></hr>
           <div class="ing-border">

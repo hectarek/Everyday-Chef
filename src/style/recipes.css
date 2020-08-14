@@ -1,13 +1,11 @@
 .recipes {
-    overflow: scroll;
+    overflow:scroll ;
+    height: 45em;
 }
 
 .recipes-container {
     height:100px;
-    width:110%;
-    border: 2px solid grey;
-    border-radius: 7px;
-    position: relative;
+   position: relative;
     
 }  
 
