@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Playball&display=swap");
+#login{
+    background-color: aliceblue;
+    padding-top: 10%;
+    
+}
+.row{
+    height: 100vh;
+}
+
+label{
+    font-weight:bold ;
+    
+}
+#em1{
+    margin-right: 5px;
+}
+#myBtn{
+    margin-top: 30px;
+    border-radius: 20px;
+}
+/* sign up page*/
+.head{
+    color: #092242;
+    font-family: 'Playball', cursive;
+}
+#chef{
+    color:#d73434;
+    font-family: 'Playball', cursive;
+}
+#info{
+       color:white;
+}
+
+.col-md-6{
+    padding-left:10%;
+}
+
+.modal-header, h4, .close {
+    background-color: #5cb85c;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+  #signup{
+      background-color: tomato;
+      text-align: center;
+      padding-top: 10%;
+      
+  }
