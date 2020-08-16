@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Recursive&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&family=Recursive&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500&family=Recursive&display=swap");
 
 body {
@@ -118,10 +117,6 @@ span {
   margin: 25px;
 }
 
-#favorites-div {
-  margin-top: 10em;
-}
-
 #login-div {
   margin-top: 10em;
 }
@@ -138,12 +133,6 @@ span {
   text-decoration: underline;
 }
 
-#favorites-h1 {
-  font-family: "Baloo Tamma 2", cursive;
-  font-size: 28px;
-  color: #092242;
-  text-decoration: underline;
-}
 
 #middle-main-div {
   /* border-style: solid;

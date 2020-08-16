@@ -8,11 +8,11 @@ function Recipes({ recipe }) {
     <div className="recipes">
         <div className="recipes-container">
           <div className="recipes-image-container">
-            <img className="recipes-image" src={recipe.image_url} alt={recipe.title} />
+            <img className="recipes-image" src={recipe.image} alt={recipe.label} />
           </div>
           <div className="recipes-text-container">
-            <h2 className="recipes-title">{recipe.title}</h2>
-            <h3 className="recipes-publisher">{recipe.publisher}</h3>
+            <h2 className="recipes-title">{recipe.label}</h2>
+            <h3 className="recipes-publisher">{recipe.url}</h3>
           </div>
         </div>
     </div>

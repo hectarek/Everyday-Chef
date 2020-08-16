@@ -61,3 +61,14 @@
 
   height: auto;
 }
+
+#favorites-div {
+  margin-top: 10em;
+}
+
+#favorites-h1 {
+  font-family: "Baloo Tamma 2", cursive;
+  font-size: 28px;
+  color: #092242;
+  text-decoration: underline;
+}
