@@ -1,12 +1,14 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function Login() {
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6" id="login">
+        <div className="container-fluid">
+            <div className="row login-container">
+                <div className="col-md-6 login" id="login">
+                    
+                    <form className='login-form'>
                     <h2>Log In </h2>
-                    <form>
                         <div className="form-group">
                             <label htmlFor="InputEmail1">
                                 <span className="fa fa-envelope" id="em1"></span>UserName
@@ -15,7 +17,7 @@ function Login() {
                         </div>
                         <div className="form-group">
                             <label htmlFor="InputPassword1">
-                                <span className="fa fa-key" id="em1"></span>Password
+                                <span className="fa fa-key" id="em2"></span>Password
 							</label>
                             <input type="password" className="form-control" id="InputPassword1" placeholder="Password" />
                         </div>
@@ -25,13 +27,17 @@ function Login() {
                                 Check me out
 							</label>
                         </div>
-                        <button type="submit" className="btn btn-primary">
-                            Submit
-						</button>
+                        <Link to="recipes">
+                            <button type="submit" className="btn btn-primary">
+                                Submit
+                            </button>
+                        </Link>
+                        
                     </form>
                 </div>
                 {/* <!--Splitup signup--> */}
-                <div className="col-md-6" id="signup">
+                <div className="col-md-6 signup" id="signup">
+                    <div className="signup-items">   
                     <h2 className="head">
                         Everyday <span id="chef">Chef</span>
                     </h2>
@@ -40,6 +46,8 @@ function Login() {
                     <button type="button" className="btn btn-primary btn-lg" id="myBtn">
                         SignUp
 					</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>

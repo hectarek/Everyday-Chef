@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "../style/recipes.css"
+import "../style/Recipes.css"
 
 function Recipes({ recipe }) {
 
@@ -12,7 +12,7 @@ function Recipes({ recipe }) {
           </div>
           <div className="recipes-text-container">
             <h2 className="recipes-title">{recipe.label}</h2>
-            <h3 className="recipes-publisher">{recipe.url}</h3>
+            <h3 className="recipes-publisher">{recipe.source}</h3>
           </div>
         </div>
     </div>

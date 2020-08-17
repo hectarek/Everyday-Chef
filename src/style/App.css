@@ -65,7 +65,6 @@ span {
   height: auto;
   /* margin: 25px; */
   text-align: center;
-  margin-bottom: 5em;
 }
 
 /* .ing-border {
@@ -79,11 +78,8 @@ span {
   /* border-width: 1.5px;
   border-style: solid;
   border-color: #092242; */
-
-  width: auto;
-  height: auto;
-  overflow: hidden;
- max-height: 45em;
+  overflow: scroll;
+  max-height: 45em;
 }
 
 #middle-div {
@@ -91,10 +87,8 @@ span {
   /* border-width: 1.5px;
   border-style: solid;
   border-color: #092242; */
-  width: auto;
-  height: auto;
-  overflow: hidden;
- max-height: 45em;
+  overflow: scroll;
+  max-height: 45em;
 }
 
 #ingredients-div {

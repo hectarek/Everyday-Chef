@@ -6,7 +6,7 @@ function User() {
             <div class="row">
 
                 {/* <!--Details info--> */}
-                <div class="col-sm-12 mt-5">
+                <div class="col-sm-12 mt-4">
                     <div class="row">
                         <div class="col-sm-3">
 
@@ -76,3 +76,5 @@ function User() {
 
     );
 }
+
+export default User;

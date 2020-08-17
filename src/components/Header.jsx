@@ -21,7 +21,7 @@ function Header() {
 				</div>
 
 				<div className="head text-center col-md-6">
-					<Link to="/">
+					<Link to="/recipes">
 						<h1 id="logo">
 							<span id="hat">
 								<Icon icon={chefHat} />
