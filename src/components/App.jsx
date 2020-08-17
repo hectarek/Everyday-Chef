@@ -12,6 +12,8 @@ import Ingredients from "./Ingredients";
 import Login from "./Login";
 import List from "./List";
 import User from './User';
+import Signup from './Signup';
+
 
 //Style Imports
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -90,9 +92,19 @@ function App() {
 	const [recipes, loading] = useRecipe(query);
 	const [recipe, setRecipe] = useState("");
 
+	const [modal, setModal] = useState(false);
+
 	const handleChange = (e) => {
 		setSearch(e.target.value);
 	};
+
+	const showModal = () => {
+		setModal(true);
+	}
+
+	const hideModal = () => {
+		setModal(false);
+	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -149,11 +161,17 @@ function App() {
 
 				<Switch>
 					<Route path="/login">
-						<Login />
+						<Login 
+							showModal={showModal}
+						/>
+						<Signup 
+							modal={modal}
+							hideModal={hideModal}
+						/>
 					</Route>
 
 					<Route path="/recipes">
-          <Header />
+          			<Header />
 						<div className="app-container">
 							<div id="header-div" className="row d-flex justify-content-center text-center">
 								<div id="middle-main-div" className="col-md-6 m-4">
@@ -188,7 +206,6 @@ function App() {
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</Route>
 

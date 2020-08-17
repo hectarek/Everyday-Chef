@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-function Login() {
+function Login({ showModal }) {
     return (
         <div className="container-fluid">
             <div className="row login-container">
@@ -43,7 +43,12 @@ function Login() {
                     </h2>
                     <h5 id="info">Begin Your Everyday Chef Journey Today</h5>
                     {/* <!-- Trigger the modal with a button --> */}
-                    <button type="button" className="btn btn-primary btn-lg" id="myBtn">
+                    <button 
+                        type="button" 
+                        className="btn btn-primary btn-lg" 
+                        id="myBtn"
+                        onClick={e => showModal()}
+                        >
                         SignUp
 					</button>
                     </div>
