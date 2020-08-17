@@ -12,10 +12,10 @@ function Header() {
 		<div className="header container">
 			<div className="row">
 				<div id="favorites-div" className="col-md-3">
-					<Link to="/login">
+					<Link to="/user">
 						<h1 id="favorites-h1">
 							<Icon icon={outlineLogin} />
-							Login
+							User
 						</h1>
 					</Link>
 				</div>

@@ -24,6 +24,7 @@ import '../style/Login.css'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import Favorites from "./Favorites";
 
 //  =========== Beginning of Code ===========
 
@@ -165,6 +166,11 @@ function App() {
 						/>
 					</Route>
 
+					<Route path="/user">
+						<Header />
+						<User />
+					</Route>
+
 					<Route path="/recipes">
           			<Header />
 						<div className="app-container">
@@ -205,9 +211,9 @@ function App() {
 					</Route>
 
 					<Route path="/favorites">
-          <Header />
-            <User/>
-          </Route>
+						<Header />
+						<Favorites />
+					</Route>
 
 				</Switch>
 
