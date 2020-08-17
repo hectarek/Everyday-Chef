@@ -1,14 +1,23 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Icon } from "@iconify/react";
+import chefHat from "@iconify/icons-mdi/chef-hat";
 
 function Login() {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid app-container">
+            <div className="header">
+                <h3 id="hat">
+                    <Icon icon={chefHat} />
+                </h3>
+                <h1 id="head">EveryDay <span id="">Chef</span></h1>
+            </div>
             <div className="row login-container">
+
                 <div className="col-md-6 login" id="login">
-                    
+
                     <form className='login-form'>
-                    <h2>Log In </h2>
+                        <h2>Log In </h2>
                         <div className="form-group">
                             <label htmlFor="InputEmail1">
                                 <span className="fa fa-envelope" id="em1"></span>UserName
@@ -32,22 +41,22 @@ function Login() {
                                 Submit
                             </button>
                         </Link>
-                        
+
                     </form>
                 </div>
                 {/* <!--Splitup signup--> */}
-                <div className="col-md-6 signup" id="signup">
-                    <div className="signup-items">   
-                    <h2 className="head">
-                        Everyday <span id="chef">Chef</span>
-                    </h2>
-                    <h5 id="info">Begin Your Everyday Chef Journey Today</h5>
-                    {/* <!-- Trigger the modal with a button --> */}
-                    <button type="button" className="btn btn-primary btn-lg" id="myBtn">
-                        SignUp
+                <div className="col-md-6 signup">
+                    <div className="signup-items">
+                        <h2 className="header2 tracking-in-expand-fwd">
+                            Sign Up
+                        </h2>
+                        <h5 id="info">Begin Your Everyday Chef Journey Today</h5>
+                        {/* <!-- Trigger the modal with a button --> */}
+                        <button type="button" className="btn btn-primary btn-lg" id="myBtn">
+                            SignUp
 					</button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
