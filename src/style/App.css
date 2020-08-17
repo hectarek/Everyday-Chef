@@ -5,66 +5,65 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500&family=Recursive&display=swap");
 
 body {
-  background-color: white;
+	background-color: white;
 }
 
 h1 {
-  font-family: Yellowtail;
-  color: #092242;
+	font-family: Yellowtail;
+	color: #092242;
 }
 
 hr {
-  border-color: #092242;
+	border-color: #092242;
 }
 
 #ingH1 {
-  color: #d73434;
-  font-size: 40px;
+	color: #d73434;
+	font-size: 40px;
 }
 
 #rech1 {
-  font-size: 40px;
+	font-size: 40px;
 }
 
 #logo {
-  font-family: Playball;
-  color: #092242;
-  font-size: 85px;
+	font-family: Playball;
+	color: #092242;
+	font-size: 85px;
 }
 
 span {
-  color: #d73434;
+	color: #d73434;
 }
 
 .app-container {
-  border-style: solid;
-  border-color: #d73434;
-  border-width: 6px;
-  width: auto;
-  height: auto;
-  margin: 30px;
-  min-width: 35em;
+	border-style: solid;
+	border-color: #d73434;
+	border-width: 6px;
+	width: auto;
+	height: auto;
+	margin: 30px;
+	min-width: 35em;
 
-  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.61);
-  -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.61);
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.61);
+	-webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.61);
+	-moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.61);
+	box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.61);
 }
 
 #main-row {
-  /* border-style: solid;
+	/* border-style: solid;
   border-color: black; */
-  width:auto;
-  height:auto;
-  margin: 30px;
-   
+	width: auto;
+	height: auto;
+	margin: 30px;
 }
 #header-div {
-  /* border-style: solid;
+	/* border-style: solid;
   border-color: black; */
-  width: auto;
-  height: auto;
-  /* margin: 25px; */
-  text-align: center;
+	width: auto;
+	height: auto;
+	/* margin: 25px; */
+	text-align: center;
 }
 
 /* .ing-border {
@@ -74,45 +73,45 @@ span {
 } */
 
 #recipes-div {
-  text-align: center;
-  /* border-width: 1.5px;
+	text-align: center;
+	/* border-width: 1.5px;
   border-style: solid;
   border-color: #092242; */
-  overflow: scroll;
-  max-height: 45em;
+	overflow: scroll;
+	max-height: 45em;
 }
 
 #middle-div {
-  text-align: center;
-  /* border-width: 1.5px;
+	text-align: center;
+	/* border-width: 1.5px;
   border-style: solid;
   border-color: #092242; */
-  overflow: scroll;
-  max-height: 45em;
+	overflow: scroll;
+	max-height: 45em;
 }
 
 #ingredients-div {
-  text-align: center;
-  /* border-width: 1.5px;
+	text-align: center;
+	/* border-width: 1.5px;
   border-style: solid;
   border-color: #092242; */
-  width: auto;
-  height: auto;
-  overflow: hidden;
-  max-height: 45em;
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	max-height: 45em;
 }
 
 #footer-div {
-  text-align: center;
-  /* border-style: solid;
+	text-align: center;
+	/* border-style: solid;
   border-color: black; */
-  width: auto;
-  height: auto;
-  margin: 25px;
+	width: auto;
+	height: auto;
+	margin: 25px;
 }
 
 #login-div {
-  margin-top: 10em;
+	margin-top: 10em;
 }
 
 /* #login-h1 {
@@ -121,36 +120,117 @@ span {
 } */
 
 #login-h1 {
-  font-family: "Baloo Tamma 2", cursive;
-  font-size: 28px;
-  color: #092242;
-  text-decoration: underline;
+	font-family: "Baloo Tamma 2", cursive;
+	font-size: 28px;
+	color: #092242;
+	text-decoration: underline;
 }
 
-
-#middle-main-div {
-  /* border-style: solid;
-  border-color: black; */
+.btn,
+.btn-small,
+.btn-small:link,
+.btn-small:visited {
+	background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+	border-radius: 10rem;
+	border: none;
+	text-transform: uppercase;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	transition: all 0.2s;
+}
+.btn:hover,
+.btn-small:hover {
+	transform: scale(1.05);
+}
+.btn:focus,
+.btn-small:focus {
+	outline: none;
+}
+.btn > *:first-child,
+.btn-small > *:first-child {
+	margin-right: 1rem;
 }
 
-/* a:hover {
-  color: red;
-} */
-
-a:link {
-  color: #092242;
-  text-decoration: none;
-  background-color: none;
+.btn {
+	padding: 1.3rem 3rem;
+	font-size: 1.4rem;
+}
+.btn svg {
+	height: 2.25rem;
+	width: 2.25rem;
+	fill: currentColor;
 }
 
-a:visited {
-  color: #092242;
+.btn-small,
+.btn-small:link,
+.btn-small:visited {
+	font-size: 1.3rem;
+	padding: 1rem 1.75rem;
+	text-decoration: none;
 }
-/* 
-a:active {
-  color: red;
-} */
+.btn-small svg,
+.btn-small:link svg,
+.btn-small:visited svg {
+	height: 1.5rem;
+	width: 1.5rem;
+	fill: currentColor;
+}
 
-a:hover {
-  color: #d73434;
+.btn-inline {
+	color: #f59a83;
+	font-size: 1.2rem;
+	border: none;
+	background-color: #f9f5f3;
+	padding: 0.8rem 1.2rem;
+	border-radius: 10rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	transition: all 0.2s;
+}
+.btn-inline svg {
+	height: 1.5rem;
+	width: 1.5rem;
+	fill: currentColor;
+	margin: 0 0.2rem;
+}
+.btn-inline span {
+	margin: 0 0.4rem;
+}
+.btn-inline:hover {
+	color: #f48982;
+	background-color: #f2efee;
+}
+.btn-inline:focus {
+	outline: none;
+}
+
+.btn-tiny {
+	height: 1.75rem;
+	width: 1.75rem;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+.btn-tiny svg {
+	height: 100%;
+	width: 100%;
+	fill: #f59a83;
+	transition: all 0.3s;
+}
+.btn-tiny:focus {
+	outline: none;
+}
+.btn-tiny:hover svg {
+	fill: #f48982;
+	transform: translateY(-1px);
+}
+.btn-tiny:active svg {
+	fill: #f48982;
+	transform: translateY(0);
+}
+.btn-tiny:not(:last-child) {
+	margin-right: 0.3rem;
 }

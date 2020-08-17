@@ -28,34 +28,7 @@
   color: #d73434;
 }
 
-#input {
-  border: 1px solid #092242;
-  border-radius: 5px;
-  height: 45px;
-  width: 30em;
-  padding: 2px 23px 2px 30px;
-  outline: 1px;
-  background-color: white;
-}
 
-#input-div {
-  /* border-style: solid;
-  border-color: black; */
-}
-
-#input:hover,
-#input:focus {
-  /* border: 1.5px solid #092242; */
-  /* background-color: rgb(240, 240, 240); */
-}
-
-#input::placeholder {
-  color: #d73434;
-  font-family: Yellowtail;
-  opacity: 3;
-  text-align: center;
-  font-size: 20px;
-}
 
 .header {
 

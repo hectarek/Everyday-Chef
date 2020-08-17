@@ -2,7 +2,7 @@ import React from "react";
 
 function User() {
     return (
-        <div class="container">
+        <div class="container app-container">
             <div class="row">
 
                 {/* <!--Details info--> */}
@@ -16,7 +16,7 @@ function User() {
                             <h4>Ash</h4>
                         </div>
                         <div class="col-sm-2">
-                            <h7>Edit</h7>
+                            <h6>Edit</h6>
                         </div>
                     </div>
 
@@ -28,10 +28,10 @@ function User() {
                             <h6>Email</h6>
                         </div>
                         <div class="col-sm-7">
-                            <h7>adc@gmail.com</h7>
+                            <h6>adc@gmail.com</h6>
                         </div>
                         <div class="col-sm-2">
-                            <h7>Edit</h7>
+                            <h6>Edit</h6>
                         </div>
                     </div>
                     <hr>
@@ -49,7 +49,7 @@ function User() {
                             </ul>
                         </div>
                         <div class="col-sm-2">
-                            <h7>Edit</h7>
+                            <h6>Edit</h6>
                         </div>
                     </div>
                     <hr>

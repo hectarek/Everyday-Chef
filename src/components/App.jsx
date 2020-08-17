@@ -13,7 +13,7 @@ import Login from "./Login";
 import List from "./List";
 import User from './User';
 import Signup from './Signup';
-
+import Favorites from "./Favorites";
 
 //Style Imports
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,7 +24,7 @@ import '../style/Login.css'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import Favorites from "./Favorites";
+import { Fraction } from 'fractional';
 
 //  =========== Beginning of Code ===========
 
@@ -53,7 +53,13 @@ const blankRecipe = {
 	url: "http://www.lottieanddoof.com/2009/07/picadillo/",
 	yield: 14.0,
 	totalTime: 30.0,
-	ingredientLines: ["2 tsp Vegetable Oil (picadillo)", "1/2 x white onion (large), chopped (1 1/2 cups) (picadillo)", "1 lb Ground Chuck (80 percent lean) (picadillo)", "1 tbsp minced garlic cloves(1 to 2 cloves) (picadillo)", "2 x tomatoes (medium), diced (2 3/4 cups) (picadillo)", "1 1/2 tsp Paprika (picadillo)", "salsa Picante, for serving (tacos)"],
+	ingredientLines: [
+		"2 tsp Vegetable Oil (picadillo)", 
+		"1/2 x white onion (large), chopped (1 1/2 cups) (picadillo)", 
+		"1 lb Ground Chuck (80 percent lean) (picadillo)", 
+		"1 tbsp minced garlic cloves(1 to 2 cloves) (picadillo)", 
+		"2 x tomatoes (medium), diced (2 3/4 cups) (picadillo)", 
+		"1 1/2 tsp Paprika (picadillo)", "salsa Picante, for serving (tacos)"]
 };
 
 function useRecipe(query) {
@@ -95,6 +101,8 @@ function App() {
 
 	const [modal, setModal] = useState(false);
 
+
+	// Event Handlers
 	const handleChange = (e) => {
 		setSearch(e.target.value);
 	};
@@ -112,43 +120,150 @@ function App() {
 		setQuery(search);
 	};
 
+	// Render methods
 	const renderRecipes = () => {
 		return recipes.map((recipe, index) => {
-      return <Recipes 
-        key={index} 
-        recipe={recipe} 
-        label={recipe.label} 
-        image={recipe.image} 
-        source={recipe.source} 
-        onClick={e => getRecipe(e.target.index)} 
-        />;
+			return (
+				<Recipes 
+					key={index} 
+					recipe={recipe} 
+					label={recipe.label} 
+					image={recipe.image} 
+					source={recipe.source} 
+					onClick={e => getRecipe(e.target.index)} 
+				/>)
 		});
 	};
 
-	const getRecipe = (blankRecipe) => {
+	const getRecipe = (recipe) => {
 		return (
       <Recipe 
-        recipe={blankRecipe} 
-        label={blankRecipe.label} 
-        image={blankRecipe.image} 
-        yield={blankRecipe.yield} 
-        totalTime={blankRecipe.totalTime} 
+        recipe={recipe} 
+        label={recipe.label} 
+        image={recipe.image} 
+        yield={recipe.yield} 
+        totalTime={recipe.totalTime} 
         />);
   };
+
+  const getIngredientsList = (ingredientsList) => {
+	
+	const newIngredients = parseIngredients(ingredientsList);
+
+	return newIngredients.map((ingredient, index) => {
+		return (
+			<List 
+				key={index}
+			  ingredients={ingredient}
+			  count={ingredient.count}
+			  unit={ingredient.unit}
+			  ingredient={ingredient.ingredient}
+			  formatCount={formatCount}
+			/>)
+	})
+  }
   
-  const getIngredients = () => {
-    return (
-      <List 
-        ingredient={blankRecipe.ingredientLines}
+  const getShoppingList = (ingredientsList) => {
+	
+	const newIngredients = parseIngredients(ingredientsList);
 
-      />
-
-    )
+	return newIngredients.map((ingredient, index) => {
+		return (
+			<Ingredients 
+				key={index}
+				ingredients={ingredient}
+				count={ingredient.count}
+				unit={ingredient.unit}
+				ingredient={ingredient.ingredient}
+			/>
+		)
+	})
   }
 
-	// const renderRecipe = () => {
-	// 		return recipe;
-	// };
+  const formatCount = count => {
+    if (count) {
+        // count  = 2.5;
+        const newCount = Math.round(count * 10000) / 10000;
+        const [int, dec] = newCount.toString().split('.').map(el => parseInt(el, 10));
+
+        if (!dec) return newCount;
+
+        if (int === 0) {
+            const fr = new Fraction(newCount);
+            return `${fr.numerator}/${fr.denominator}`;
+        } else {
+            const fr = new Fraction(newCount - int);
+            return `${int} ${fr.numerator}/${fr.denominator}`;
+        }
+    }
+    return "?"
+	}
+
+  const parseIngredients = (ingredients) => {
+	const unitLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon' ,'cups', 'pounds'];
+	const unitShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound']
+	const units = [...unitShort, 'kg', 'g']
+	
+	const newIngredients = ingredients.map(el => {
+		// 1. Uniform Units
+		let ingredient = el.toLowerCase();
+		unitLong.forEach((unit, i) => {
+			ingredient = ingredient.replace(unit, unitShort[i]);
+		});
+
+		// 2. Remove Parentheses
+		ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+
+		// 3. Parse ingredients into count, unit and ingredient.
+		const arrIng = ingredient.split(' ');
+		const unitIndex = arrIng.findIndex(el2 => units.includes(el2));
+
+		let objIng;
+
+		if (unitIndex > -1) {
+			// There is a unit
+			// Ex. 4 1/2 cups, arrCount is [4, 1/2] --> eval("4+1/2") --> 4.5
+			// Ex. 4 cups, arrCount is [4]                
+			
+			const arrCount = arrIng.slice(0, unitIndex); // example 4 1/2 = [4, 1/2] --> eval(4+1/2) = 4.5
+
+			let count;
+			if(arrCount.length === 1) {
+				// Edge case, ex. 1-1/3 cup, replaces the '-' so with '+' so eval works.
+				count = eval(arrIng[0].replace('-', '+'));
+			} else {
+				// Evaluating so that it turns the array into decimal
+				count = eval(arrIng.slice(0, unitIndex).join('+'));
+			}
+
+			// Final object to return the correct 
+			objIng = {
+				count: count, 
+				unit: arrIng[unitIndex],
+				ingredient: arrIng.slice(unitIndex + 1).join(' ')
+			}
+		} else if (parseInt(arrIng[0], 10)) {
+			// There is NO unit, but 1st element is a number
+			objIng = {
+				count: parseInt(arrIng[0], 10),
+				unit: '',
+				ingredient: arrIng.slice(1).join(" ")
+			}
+		} else if (unitIndex === -1) {
+			// There is no unit and no number in the first position
+			objIng = {
+				count: 1,
+				unit: '',
+				ingredient: ingredient
+			}
+		}
+
+		return objIng;
+
+		});
+		ingredients = newIngredients
+		return ingredients;
+	}
 
 	return (
 		<Router>
@@ -198,12 +313,13 @@ function App() {
 								</div>
 
 								<div id="middle-div" className="col-md-6">
-									{loading ? <h1>Recipes Go Here</h1> : getRecipe(blankRecipe)}
+									{loading ? <h1>Recipe Goes Here</h1> : getRecipe(blankRecipe)}
+									{loading ? <h1>List Goes Here</h1> : getIngredientsList(blankRecipe.ingredientLines)}
 								</div>
 
 								<div id="ingredients-div" className="col-md-3">
 									<div className="ing-border">
-										<Ingredients />
+									{loading ? <h1>List Goes Here</h1> : getShoppingList(blankRecipe.ingredientLines)}
 									</div>
 								</div>
 							</div>
