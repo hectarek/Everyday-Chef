@@ -13,7 +13,7 @@ function Signup({ modal, hideModal }) {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h4>SignUp</h4>
-							<button type="button" className="close">
+							<button type="button" className="close" onClick={e => hideModal()}>
 								&times;
 							</button>
 						</div>
@@ -51,12 +51,6 @@ function Signup({ modal, hideModal }) {
 									</label>
 									<input type="text" className="form-control" id="psw2" placeholder="Enter password" />
 								</div>
-								<div className="checkbox">
-									<label>
-										<input type="checkbox" value="" />
-										Remember me
-									</label>
-								</div>
 								<button type="submit" className="btn btn-success btn-block">
 									<span className=""></span>Sign Up
 								</button>
@@ -65,18 +59,13 @@ function Signup({ modal, hideModal }) {
 						<div className="modal-footer">
 							<button 
 								type="submit" 
-								className="btn btn-danger btn-default pull-left"
+								className="btn btn-danger btn-default pull-right"
 								onClick={e => hideModal()}
 								>
 								<span className="glyphicon glyphicon-remove"></span>
 								Cancel
 							</button>
-							<p>
-								Not a member? Sign Up
-							</p>
-							<p>
-								Forgot Password?
-							</p>
+							
 						</div>
 					</div>
 			</div>

@@ -111,11 +111,6 @@ function App() {
 		setQuery(search);
 	};
 
-	const handleClick = (index) => {
-		getRecipe(index);
-		console.log(index);
-	};
-
 	const renderRecipes = () => {
 		return recipes.map((recipe, index) => {
       return <Recipes 
@@ -124,7 +119,7 @@ function App() {
         label={recipe.label} 
         image={recipe.image} 
         source={recipe.source} 
-        onClick={(e) => handleClick(e.target.index)} 
+        onClick={e => getRecipe(e.target.index)} 
         />;
 		});
 	};
