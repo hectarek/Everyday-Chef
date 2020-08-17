@@ -1,40 +1,38 @@
 .recipes {
-    width: 100%;
-    margin-top: 1em;
-    margin-bottom: 1em;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .recipes:hover {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
 .recipes-container {
-    display: flex;  
-}  
+  display: flex;
+}
 
 .recipes-image-container {
-    
 }
 
 .recipes-image {
-    height: 64px;
-    border: 2px solid white;
-    border-radius: 50%;
+  height: 64px;
+  border: 2px solid white;
+  border-radius: 50%;
 }
 
 .recipes-text-container {
-    padding: .5em;
+  padding: 0.5em;
 }
 
 .recipes-title {
-    color:red;
-    font-size: 14px;
-    text-align: left;
+  color: red;
+  font-size: 14px;
+  text-align: left;
 }
 
 .recipes-publisher {
-    color: black;
-    font-size: 12px;
-    text-align: left;
+  color: black;
+  font-size: 12px;
+  text-align: left;
 }
-
