@@ -2,9 +2,9 @@ import React from "react";
 
 import "../style/Recipes.css";
 
-function Recipes({ recipe }) {
+function Recipes({ recipe, handleClick }) {
   return (
-    <div className="recipes">
+    <div className="recipes" onClick={() => handleClick(recipe)}>
       <div className="recipes-container">
         <div className="recipes-image-container">
           <img

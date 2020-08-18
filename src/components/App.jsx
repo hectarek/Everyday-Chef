@@ -31,36 +31,40 @@ import { Fraction } from 'fractional';
 
 library.add(fab, fas);
 
-const dumbApi = "https://forkify-api.herokuapp.com/api/search?q=";
-const backendApi = "https://cors-anywhere.herokuapp.com/https://everydaychef-api.herokuapp.com/recipes?q=";
-const newApi = "https://cors-anywhere.herokuapp.com/https://everydaychef-api.herokuapp.com/recipes?q=";
-
-const elements = {
-	searchForm: document.querySelector(".search"),
-	searchInput: document.querySelector(".search__field"),
-	searchRes: document.querySelector(".results"),
-	searchResList: document.querySelector(".results__list"),
-	searchResPages: document.querySelector(".results__pages"),
-	recipe: document.querySelector(".recipe"),
-	shopping: document.querySelector(".shopping__list"),
-	likesMenu: document.querySelector(".likes__field"),
-	likesList: document.querySelector(".likes__list"),
-};
+const backendAPI = "https://everydaychef-api.herokuapp.com/recipes?q=";
+const proxy = "https://cors-anywhere.herokuapp.com/"
 
 const blankRecipe = {
 	id: null,
-	label: "Crisp Tacos Picadillo",
-	image: "https://www.edamam.com/web-img/32d/32da8c201c42d8aae7a7f51449c83e2a.jpg",
-	url: "http://www.lottieanddoof.com/2009/07/picadillo/",
-	yield: 14.0,
-	totalTime: 5.0,
-	ingredientLines: [
-		"2 tsp Vegetable Oil (picadillo)", 
-		"1/2 x white onion (large), chopped (1 1/2 cups) (picadillo)", 
-		"1 lb Ground Chuck (80 percent lean) (picadillo)", 
-		"1 tbsp minced garlic cloves(1 to 2 cloves) (picadillo)", 
-		"2 x tomatoes (medium), diced (2 3/4 cups) (picadillo)", 
-		"1 1/2 tsp Paprika (picadillo)", "salsa Picante, for serving (tacos)"]
+    uri: "http://www.edamam.com/ontologies/edamam.owl#recipe_6c6b5baf220ceb5b25b7c9695f91046e",
+    recipeId: "6c6b5baf220ceb5b25b7c9695f91046e",
+    label: "Crisp Tacos Picadillo",
+    image: "https://www.edamam.com/web-img/32d/32da8c201c42d8aae7a7f51449c83e2a.jpg",
+    source: "Lottie + Doof",
+    url: "http://www.lottieanddoof.com/2009/07/picadillo/",
+    yield: 14.0,
+    totalTime: 4.0,
+    ingredientLines: [
+        "2 tsp Vegetable Oil (picadillo)",
+        "1/2 x white onion (large), chopped (1 1/2 cups) (picadillo)",
+        "1 lb Ground Chuck (80 percent lean) (picadillo)",
+        "1 tbsp minced garlic cloves(1 to 2 cloves) (picadillo)",
+        "2 x tomatoes (medium), diced (2 3/4 cups) (picadillo)",
+        "1 1/2 tsp Paprika (picadillo)",
+        "1 tsp ancho chile powder (picadillo)",
+        "1 tsp Dried Oregano (picadillo)",
+        "1 tsp coarse salt (picadillo)",
+        "1 tsp freshly ground pepper (picadillo)",
+        "3/4 tsp Ground Cumin (picadillo)",
+        "1 1/2 cup water (picadillo)",
+        "3 tsp White Vinegar (picadillo)",
+        "vegetable oil for frying (tacos)",
+        "20 x Corn Tortillas (tacos)",
+        "Iceberg Lettuce Shredded,for serving (tacos)",
+        "white onion shredded,for serving (tacos)",
+        "shredded cheddar cheese (tacos)",
+        "salsa Picante, for serving (tacos)"
+    ]
 };
 
 function useRecipe(query) {
@@ -71,7 +75,7 @@ function useRecipe(query) {
 		async function getRecipes() {
 			try {
 				setLoading(true);
-				let response = await fetch(`${newApi}${query}`);
+				let response = await fetch(`${proxy}${backendAPI}${query}`);
 				let data = await response.json();
 
 				setResults(
@@ -95,11 +99,19 @@ function useRecipe(query) {
 }
 
 function App() {
+	// State from the Query
 	const [search, setSearch] = useState("");
 	const [query, setQuery] = useState("");
 	const [recipes, loading] = useRecipe(query);
-	const [recipe, setRecipe] = useState("");
 
+	// State for selecting Recipe
+	const [recipe, setRecipe] = useState("");
+	const [selected, setSelected] = useState(false);
+
+	// State for adding to Cart
+	const [addedToCart, setAddedToCart] = useState(false);
+	const [cart, setCart] = useState([])
+	// Other
 	const [modal, setModal] = useState(false);
 
 
@@ -121,17 +133,29 @@ function App() {
 		setQuery(search);
 	};
 
+	const handleClick = selectedRecipe => {
+		setRecipe(selectedRecipe);
+		setSelected(true);
+		console.log(selectedRecipe);
+	}
+
+	const getAddedToCart = () => {
+		addToShoppingCart(recipe);
+		setAddedToCart(true);
+	}
+
 	// Render methods
 	const renderRecipes = () => {
 		return recipes.map((recipe, index) => {
 			return (
 				<Recipes 
-					key={index} 
-					recipe={recipe} 
+					key={index}
+					recipe={recipe}
+					recipeId={recipe.recipeId} 
 					label={recipe.label} 
 					image={recipe.image} 
 					source={recipe.source} 
-					onClick={e => getRecipe(e.target.index)} 
+					handleClick={handleClick}
 				/>)
 		});
 	};
@@ -147,48 +171,56 @@ function App() {
 		/>);
   };
 
-  const getIngredientsList = (ingredientsList) => {
+  	const getIngredientsList = (ingredientsList) => {
 	
-	const newIngredients = parseIngredients(ingredientsList);
+		const newIngredients = parseIngredients(ingredientsList);
 
-	return newIngredients.map((ingredient, index) => {
-		return (
-			<List 
-				key={index}
-			  	ingredients={ingredient}
-			  	count={ingredient.count}
-			  	unit={ingredient.unit}
-				ingredient={ingredient.ingredient}
-				url={ingredient.url}
-			  	formatCount={formatCount}
-			/>)
-	})
-  }
+		return newIngredients.map((ingredient, index) => {
+			return (
+				<List 
+					key={index}
+					ingredients={ingredient}
+					count={ingredient.count}
+					unit={ingredient.unit}
+					ingredient={ingredient.ingredient}
+					url={ingredient.url}
+					formatCount={formatCount}
+				/>)
+		})
+  	}
 
   const getEndList = (recipe) => {
 	  return (
 		  <ListTag 
 			  recipe={recipe}
 			  url={recipe.url}
+			  source={recipe.source}
+			  addedToCart={getAddedToCart}
 		  />
 	  )
   }
   
-  const getShoppingList = (ingredientsList) => {
+  const addToShoppingCart = (recipe) => {
 	
-	const newIngredients = parseIngredients(ingredientsList);
+	const ingredientsList = parseIngredients(recipe.ingredientLines);
+	
+	return ingredientsList.forEach(ingredient => {
+		setCart(item => [...item, ingredient])
+	})
+  }
 
-	return newIngredients.map((ingredient, index) => {
-		return (
+  const renderShoppingCart = () => {
+	  return cart.map((item, index) => {
+			return (
 			<Ingredients 
 				key={index}
-				ingredients={ingredient}
-				count={ingredient.count}
-				unit={ingredient.unit}
-				ingredient={ingredient.ingredient}
+				item={item}
+				count={item.count}
+				unit={item.unit}
+				ingredient={item.ingredient}
 			/>
-		)
-	})
+		) 
+	  })
   }
 
   const formatCount = count => {
@@ -244,7 +276,7 @@ function App() {
 				count = eval(arrIng[0].replace('-', '+'));
 			} else {
 				// Evaluating so that it turns the array into decimal
-				count = eval(arrIng.slice(0, unitIndex).join('+'));
+				// count = eval(arrIng.slice(0, unitIndex).join('+'));
 			}
 
 			// Final object to return the correct 
@@ -317,18 +349,18 @@ function App() {
 
 							<div className="row text-center justify-content-md-center">
 								<div className="col-md-3 m-2 p-2 recipes-div">
-									{loading ? <h1>Recipes Go Here</h1> : renderRecipes()}
+									{loading ? <h1>Loading...</h1> : renderRecipes()}
 								</div>
 
 								<div className="col-md-5 m-2 p-2 middle-div justify-content-md-center">
-									{loading ? <h1>Recipe Goes Here</h1> : getRecipe(blankRecipe)}
-									{loading ? <h1>List Goes Here</h1> : getIngredientsList(blankRecipe.ingredientLines)}
-									{loading ? <h1>List Goes Here</h1> : getEndList(blankRecipe)}
+									{selected ? getRecipe(recipe) : <h1>Loading...</h1>}
+									{selected ? getIngredientsList(recipe.ingredientLines) : <h1>Loading...</h1>}
+									{selected ? getEndList(recipe) : <h1>Loading...</h1>}
 								</div>
 
 								<div className="col-md-3 m-2 p-2 ingredients-div">
 									<div>
-									{loading ? <h1>List Goes Here</h1> : getShoppingList(blankRecipe.ingredientLines)}
+									{addedToCart ? renderShoppingCart() : <h1>Items will go here</h1>}
 									</div>
 								</div>
 							</div>

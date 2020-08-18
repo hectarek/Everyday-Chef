@@ -1,15 +1,15 @@
 import React from "react";
 import "../style/Ingredients.css";
 
-function Ingredients ({ ingredients }) {
+function Ingredients ({ item }) {
 	return (
 		<div>
 			<li className="shopping__item">
 				<div className="shopping__count">
-					<input className="shopping__count-value" type="number" defaultValue={ingredients.count} step={ingredients.count}  />
-					<p>{ingredients.unit}</p>
+					<input className="shopping__count-value" type="number" defaultValue={item.count} step={item.count}  />
+					<p>{item.unit}</p>
 				</div>
-				<p className="shopping__description">{ingredients.ingredient}</p>
+				<p className="shopping__description">{item.ingredient}</p>
 				<button className="shopping__delete btn btn-danger">x</button>
 			</li>
 		</div>
