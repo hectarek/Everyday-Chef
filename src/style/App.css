@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500&family=Recursive&display=swap");
 
 body {
-  background-color: white;
+  background-color: whitesmoke;
 }
 
 hr {
@@ -61,6 +61,8 @@ hr {
 
 .recipes-div {
   text-align: center;
+  overflow:scroll;
+height:500px;
 }
 
 .middle-div {
@@ -69,6 +71,8 @@ hr {
 
 .ingredients-div {
   text-align: center;
+  overflow:scroll;
+height:500px;
 }
 
 .footer-div {
