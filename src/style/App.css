@@ -61,8 +61,8 @@ hr {
 
 .recipes-div {
   text-align: center;
-  overflow:scroll;
-height:500px;
+  max-height: 50em;
+  overflow: scroll;
 }
 
 .middle-div {
@@ -71,8 +71,8 @@ height:500px;
 
 .ingredients-div {
   text-align: center;
-  overflow:scroll;
-height:500px;
+  max-height: 50em;
+  overflow: scroll;
 }
 
 .footer-div {
