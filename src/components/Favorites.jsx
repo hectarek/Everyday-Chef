@@ -1,5 +1,5 @@
 // Basic Imports
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 //Style Imports
 import "bootstrap/dist/css/bootstrap.min.css";

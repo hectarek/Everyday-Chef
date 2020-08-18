@@ -299,7 +299,7 @@ function App() {
 					<Route path="/recipes">
           			<Header />
 						<div className="app-container">
-							<div className="row m-5 justify-content-md-center">
+							<div className="row mt-4 justify-content-md-center">
 								<Search search={search} handleChange={handleChange} handleSubmit={handleSubmit} />
 							</div>
 
