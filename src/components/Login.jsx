@@ -3,40 +3,38 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import chefHat from "@iconify/icons-mdi/chef-hat";
 
-import '../style/Login.css';
+import "../style/Login.css";
 
-function Login({ showModal }) {
+function Login({ showModal, user, handleChangeLogin, handleSubmitLogin }) {
 	return (
 		<div>
 			<div className="login__title">
-				<div className='chef-hat'>
+				<div className="chef-hat">
 					<Icon icon={chefHat} />
 				</div>
-				<h1  className="logo">
+				<h1 className="logo">
 					EveryDay <span>Chef</span>
 				</h1>
 			</div>
 			<div className="row login-container">
 				<div className="col-md-6 login">
-					<form className="login-form">
+					<form className="login-form" onSubmit={handleSubmitLogin}>
 						<h1 className="login-heading">Log In</h1>
 						<div className="form-group">
 							<label htmlFor="InputEmail1">
 								<span className="fa fa-envelope" id="em1"></span>UserName
 							</label>
-							<input type="username" className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter UserName" />
+							<input type="username" value={user.userName} className="form-control" onChange={handleChangeLogin} name="userName" placeholder="Enter UserName" />
 						</div>
 						<div className="form-group">
 							<label htmlFor="InputPassword1">
 								<span className="fa fa-key" id="em2"></span>Password
 							</label>
-							<input type="password" className="form-control" id="InputPassword1" placeholder="Password" />
+							<input type="password" value={user.password} className="form-control" onChange={handleChangeLogin} name="password" placeholder="Password" />
 						</div>
-						<Link to="recipes">
-							<button type="submit" className="btn btn-primary btn-lg">
-								Submit
-							</button>
-						</Link>
+						<button type="submit" className="btn btn-primary btn-lg">
+							Submit
+						</button>
 					</form>
 				</div>
 

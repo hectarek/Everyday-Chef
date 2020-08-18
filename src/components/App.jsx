@@ -1,6 +1,7 @@
 // Basic Imports
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from 'axios';
 
 //Component Imports
 import Header from "./Header";
@@ -31,41 +32,9 @@ import { Fraction } from 'fractional';
 
 library.add(fab, fas);
 
-const backendAPI = "https://everydaychef-api.herokuapp.com/recipes?q=";
+const recipesApiCall = "https://everydaychef-api.herokuapp.com/recipes?q=";
+const usersApiCall = "https://everydaychef-api.herokuapp.com/signup"
 const proxy = "https://cors-anywhere.herokuapp.com/"
-
-const blankRecipe = {
-	id: null,
-    uri: "http://www.edamam.com/ontologies/edamam.owl#recipe_6c6b5baf220ceb5b25b7c9695f91046e",
-    recipeId: "6c6b5baf220ceb5b25b7c9695f91046e",
-    label: "Crisp Tacos Picadillo",
-    image: "https://www.edamam.com/web-img/32d/32da8c201c42d8aae7a7f51449c83e2a.jpg",
-    source: "Lottie + Doof",
-    url: "http://www.lottieanddoof.com/2009/07/picadillo/",
-    yield: 14.0,
-    totalTime: 4.0,
-    ingredientLines: [
-        "2 tsp Vegetable Oil (picadillo)",
-        "1/2 x white onion (large), chopped (1 1/2 cups) (picadillo)",
-        "1 lb Ground Chuck (80 percent lean) (picadillo)",
-        "1 tbsp minced garlic cloves(1 to 2 cloves) (picadillo)",
-        "2 x tomatoes (medium), diced (2 3/4 cups) (picadillo)",
-        "1 1/2 tsp Paprika (picadillo)",
-        "1 tsp ancho chile powder (picadillo)",
-        "1 tsp Dried Oregano (picadillo)",
-        "1 tsp coarse salt (picadillo)",
-        "1 tsp freshly ground pepper (picadillo)",
-        "3/4 tsp Ground Cumin (picadillo)",
-        "1 1/2 cup water (picadillo)",
-        "3 tsp White Vinegar (picadillo)",
-        "vegetable oil for frying (tacos)",
-        "20 x Corn Tortillas (tacos)",
-        "Iceberg Lettuce Shredded,for serving (tacos)",
-        "white onion shredded,for serving (tacos)",
-        "shredded cheddar cheese (tacos)",
-        "salsa Picante, for serving (tacos)"
-    ]
-};
 
 function useRecipe(query) {
 	const [loading, setLoading] = useState(false);
@@ -75,7 +44,7 @@ function useRecipe(query) {
 		async function getRecipes() {
 			try {
 				setLoading(true);
-				let response = await fetch(`${proxy}${backendAPI}${query}`);
+				let response = await fetch(`${proxy}${recipesApiCall}${query}`);
 				let data = await response.json();
 
 				setResults(
@@ -111,6 +80,28 @@ function App() {
 	// State for adding to Cart
 	const [addedToCart, setAddedToCart] = useState(false);
 	const [cart, setCart] = useState([])
+
+	// User Sign up 
+	const [userSignUp, setUserSignUp] = useReducer(
+		(state, newState) => ({...state, ...newState}),
+		{
+			firstName: '',
+			lastName: '',
+			userName: '',
+			email: '',
+			password: ''
+	});
+
+	const [userLogin, setUserLogin] = useReducer(
+		(state, newState) => ({...state, ...newState}),
+		{
+			userName: '',
+			password: ''
+		});
+	
+	
+	const [isSignedUp, setIsSignedUp] = useState(false);
+
 	// Other
 	const [modal, setModal] = useState(false);
 
@@ -119,6 +110,22 @@ function App() {
 	const handleChange = (e) => {
 		setSearch(e.target.value);
 	};
+
+	const handleChangeSignup = (e) => {
+
+		const input = e.target.name;
+		const newValue = e.target.value;
+
+		setUserSignUp({[input]: newValue});
+	};
+
+	const handleChangeLogin = (e) => {
+
+		const input = e.target.name;
+		const newValue = e.target.value;
+
+		setUserLogin({[input]: newValue});
+	}
 
 	const showModal = () => {
 		setModal(true);
@@ -136,12 +143,47 @@ function App() {
 	const handleClick = selectedRecipe => {
 		setRecipe(selectedRecipe);
 		setSelected(true);
-		console.log(selectedRecipe);
 	}
 
 	const getAddedToCart = () => {
 		addToShoppingCart(recipe);
 		setAddedToCart(true);
+	}
+	
+	const handleSignupSubmission = (e) => {
+	
+		e.preventDefault();
+
+		axios({
+			method: 'post',
+			url: `${proxy}${usersApiCall}`,
+			data: {
+				firstName: userSignUp.firstName,
+				lastName: userSignUp.lastName,
+				userName: userSignUp.userName,
+				email: userSignUp.email,
+				password: userSignUp.password
+			}
+		})
+		.then(response => {
+			console.log(response);
+		})	
+	}
+
+	const handleSubmitLogin = (e) => {
+		e.preventDefault();
+
+		axios({
+			method: 'post',
+			url: `${proxy}${usersApiCall}`,
+			data: {
+				userName: userLogin.userName,
+				password: userLogin.password
+			}
+		})
+		.then(response => {
+			console.log(response);
+		})
 	}
 
 	// Render methods
@@ -316,9 +358,15 @@ function App() {
 					<Route path="/login">
 						<Login 
 							showModal={showModal}
+							user={userLogin}
+							handleChangeLogin={handleChangeLogin}
+							handleSubmitLogin={handleSubmitLogin}
 						/>
 						<Signup 
 							modal={modal}
+							newUser={userSignUp}
+							handleChangeSignup={handleChangeSignup}
+							handleSignupSubmission={handleSignupSubmission}
 							hideModal={hideModal}
 						/>
 					</Route>

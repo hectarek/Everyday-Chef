@@ -1,7 +1,8 @@
 import React from "react";
 import "../style/Signup.css"
 
-function Signup({ modal, hideModal }) {
+
+function Signup({ modal, hideModal, newUser, handleChangeSignup ,handleSignupSubmission }) {
 
 	console.log(modal);
 
@@ -18,14 +19,28 @@ function Signup({ modal, hideModal }) {
 							</button>
 						</div>
 						<div className="modal-body">
-							<form>
+							<form onSubmit={handleSignupSubmission}>
 								<div className="form-row">​</div>
+								<div className="form-group">
+									<label htmlFor="firstName">
+										<span className="fa fa-user" id="em1"></span>
+										First Name
+									</label>
+									<input type="text" value={newUser.firstName} onChange={handleChangeSignup} className="form-control" name="firstName" placeholder="Enter First Name" />
+								</div>
+								<div className="form-group">
+									<label htmlFor="lastName">
+										<span className="fa fa-user" id="em1"></span>
+										Last Name
+									</label>
+									<input type="text" value={newUser.lastName} onChange={handleChangeSignup} className="form-control" name="lastName" placeholder="Enter Last Name" />
+								</div>
 								<div className="form-group">
 									<label htmlFor="InputEmail">
 										<span className="fa fa-envelope" id="em1"></span>Email
 									</label>
 
-									<input type="email" className="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email" />
+									<input type="email" value={newUser.email} onChange={handleChangeSignup} className="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" />
 									<small id="emailHelp" className="form-text text-muted">
 										We'll never share your email with anyone else.
 									</small>
@@ -35,25 +50,20 @@ function Signup({ modal, hideModal }) {
 										<span className="fa fa-user" id="em1"></span>
 										Username
 									</label>
-									<input type="text" className="form-control" id="usrname" placeholder="Enter username" />
+									<input type="text" value={newUser.userName} onChange={handleChangeSignup} className="form-control" name="userName" placeholder="Enter username" />
 								</div>
 								<div className="form-group">
 									<label htmlFor="psw">
 										<span className="fa fa-key" id="em1"></span>
 										Password
 									</label>
-									<input type="text" className="form-control" id="psw" placeholder="Enter password" />
+									<input type="text" value={newUser.password} onChange={handleChangeSignup} className="form-control" name="password" placeholder="Enter password" />
 								</div>
-								<div className="form-group">
-									<label htmlFor="psw2">
-										<span className="fa fa-key" id="em1"></span>
-										Confirm Password
-									</label>
-									<input type="text" className="form-control" id="psw2" placeholder="Enter password" />
-								</div>
+								
 								<button type="submit" className="btn btn-success btn-block">
 									<span className=""></span>Sign Up
 								</button>
+								
 							</form>
 						</div>
 						<div className="modal-footer">
