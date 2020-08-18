@@ -14,11 +14,12 @@ import List from "./List";
 import User from './User';
 import Signup from './Signup';
 import Favorites from "./Favorites";
+import ListTag from "./ListTag";
+
 
 //Style Imports
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/App.css";
-import '../style/Login.css'
 
 //Dependency Imports
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -52,7 +53,7 @@ const blankRecipe = {
 	image: "https://www.edamam.com/web-img/32d/32da8c201c42d8aae7a7f51449c83e2a.jpg",
 	url: "http://www.lottieanddoof.com/2009/07/picadillo/",
 	yield: 14.0,
-	totalTime: 30.0,
+	totalTime: 5.0,
 	ingredientLines: [
 		"2 tsp Vegetable Oil (picadillo)", 
 		"1/2 x white onion (large), chopped (1 1/2 cups) (picadillo)", 
@@ -137,13 +138,13 @@ function App() {
 
 	const getRecipe = (recipe) => {
 		return (
-      <Recipe 
-        recipe={recipe} 
-        label={recipe.label} 
-        image={recipe.image} 
-        yield={recipe.yield} 
-        totalTime={recipe.totalTime} 
-        />);
+		<Recipe 
+			recipe={recipe} 
+			label={recipe.label} 
+			image={recipe.image} 
+			yield={recipe.yield} 
+			totalTime={recipe.totalTime} 
+		/>);
   };
 
   const getIngredientsList = (ingredientsList) => {
@@ -154,13 +155,23 @@ function App() {
 		return (
 			<List 
 				key={index}
-			  ingredients={ingredient}
-			  count={ingredient.count}
-			  unit={ingredient.unit}
-			  ingredient={ingredient.ingredient}
-			  formatCount={formatCount}
+			  	ingredients={ingredient}
+			  	count={ingredient.count}
+			  	unit={ingredient.unit}
+				ingredient={ingredient.ingredient}
+				url={ingredient.url}
+			  	formatCount={formatCount}
 			/>)
 	})
+  }
+
+  const getEndList = (recipe) => {
+	  return (
+		  <ListTag 
+			  recipe={recipe}
+			  url={recipe.url}
+		  />
+	  )
   }
   
   const getShoppingList = (ingredientsList) => {
@@ -269,7 +280,6 @@ function App() {
 		<Router>
 			<div className="container-fluid">
 				
-
 				<Switch>
 					<Route path="/login">
 						<Login 
@@ -289,36 +299,35 @@ function App() {
 					<Route path="/recipes">
           			<Header />
 						<div className="app-container">
-							<div id="header-div" className="row d-flex justify-content-center text-center">
-								<div id="middle-main-div" className="col-md-6 m-4">
-									<Search search={search} handleChange={handleChange} handleSubmit={handleSubmit} />
+							<div className="row m-5 justify-content-md-center">
+								<Search search={search} handleChange={handleChange} handleSubmit={handleSubmit} />
+							</div>
+
+							<div className="row text-center justify-content-md-center">
+								<div className="col-md-3 m-2 p-2">
+									<h1 className="recipes__heading">Recipes</h1>
+								</div>
+								<div className="col-md-5 m-2 p-2">
+									<h1 className="middle__heading">Your Recipe</h1>
+								</div>
+								<div className="col-md-3 m-2 p-2">
+									<h1 className="ingredient__heading">Ingredients</h1>
 								</div>
 							</div>
 
-							<div id="header-div" className="row d-flex justify-content-center text-center">
-								<div id="title-main-div" className="col-md-3">
-									<h1 id="rech1">Recipes</h1>
-								</div>
-								<div id="title-main-div" className="col-md-6">
-									<h1>Middle</h1>
-								</div>
-								<div id="title-main-div" className="col-md-3">
-									<h1 id="ingH1">Ingredients</h1>
-								</div>
-							</div>
-
-							<div id="main-row" className="row d-flex justify-content-center text-center">
-								<div id="recipes-div" className="col-md-3">
+							<div className="row text-center justify-content-md-center">
+								<div className="col-md-3 m-2 p-2 recipes-div">
 									{loading ? <h1>Recipes Go Here</h1> : renderRecipes()}
 								</div>
 
-								<div id="middle-div" className="col-md-6">
+								<div className="col-md-5 m-2 p-2 middle-div justify-content-md-center">
 									{loading ? <h1>Recipe Goes Here</h1> : getRecipe(blankRecipe)}
 									{loading ? <h1>List Goes Here</h1> : getIngredientsList(blankRecipe.ingredientLines)}
+									{loading ? <h1>List Goes Here</h1> : getEndList(blankRecipe)}
 								</div>
 
-								<div id="ingredients-div" className="col-md-3">
-									<div className="ing-border">
+								<div className="col-md-3 m-2 p-2 ingredients-div">
+									<div>
 									{loading ? <h1>List Goes Here</h1> : getShoppingList(blankRecipe.ingredientLines)}
 									</div>
 								</div>
@@ -333,7 +342,7 @@ function App() {
 
 				</Switch>
 
-				<div id="footer-div" className="row d-flex justify-content-center text-center">
+				<div className="row d-flex justify-content-center text-center footer-div">
 					<Footer />
 				</div>
 			</div>

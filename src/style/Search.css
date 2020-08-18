@@ -1,4 +1,4 @@
-.search {
+.search-box {
   border: 1px solid #092242;
   border-radius: 5px;
   height: 45px;
@@ -8,7 +8,7 @@
   background-color: white;
 }
 
-.search::placeholder {
+.search-box::placeholder {
   color: #d73434;
   font-family: Yellowtail;
   opacity: 3;

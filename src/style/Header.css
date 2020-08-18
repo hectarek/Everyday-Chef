@@ -1,76 +1,63 @@
 @import url("https://fonts.googleapis.com/css2?family=Playball&display=swap");
 
-#header-row {
-  margin-top: -8em;
-}
-
-.head {
-  text-align: center;
-  font-family: Playball;
-  margin-top: 10em;
-}
-
-.header {
+.header-container {
   height: auto;
 }
 
-.head1 {
-  color: #d73434;
+.heading__link:hover {
+  text-decoration: none;
+} 
+
+.heading__main-title {
+  font-size: 4rem;
 }
 
-#favorites-div {
-  margin-top: 10em;
-}
-
-#favorites-h1 {
+.favorites-h1 {
   font-family: "Baloo Tamma 2", cursive;
   font-size: 28px;
   color: #092242;
   text-decoration: underline;
   text-align: center;
-  margin-top: 5em;
 }
 
-#logo {
-  margin-bottom: 30px;
-}
-
-#hat {
-  margin-left: 200px;
-  margin-right: 200px;
-}
-
-#hat:hover {
+.chef-red {
   color: #d73434;
 }
 
-#chef-red {
-  color: #d73434;
-}
-
-.icons {
-  padding-left: 6em;
-  padding-right: 6em;
-  color: #092242;
-  padding-right: 5em;
-  padding-left: 5em;
-}
-
-#hat:hover {
-  color: #d73434;
-}
-
-.header {
-  height: auto;
-}
-
-#favorites-div {
-  margin-top: 10em;
-}
-
-#favorites-h1 {
+.heading__link-title {
   font-family: "Baloo Tamma 2", cursive;
   font-size: 28px;
   color: #092242;
-  text-decoration: underline;
+}
+
+
+@-webkit-keyframes hvr-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+@keyframes hvr-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+.pop {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.pop:hover, .pop:focus, .pop:active {
+  text-decoration: none;
+  -webkit-animation-name: hvr-pop;
+  animation-name: hvr-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }

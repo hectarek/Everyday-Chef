@@ -6,46 +6,61 @@ import { Icon } from "@iconify/react";
 import chefHat from "@iconify/icons-mdi/chef-hat";
 import heartSolid from "@iconify/icons-clarity/heart-solid";
 import outlineLogin from "@iconify/icons-ic/outline-login";
+import baselineFoodBank from '@iconify/icons-ic/baseline-food-bank';
+import personFill from '@iconify/icons-bi/person-fill';
 
 function Header() {
-  return (
-    <div className="header container">
-      <div id="header-row" className="row">
-        <div id="favorites-div" className="col-md-2">
-          <Link to="/user">
-            <h1 id="favorites-h1">
-              <Icon icon={outlineLogin} />
-              User
-            </h1>
-          </Link>
-        </div>
+	return (
+		<div className="container header-container">
+			<div className="row justify-content-md-center">
+				<h1 className="heading__main-title logo">
+					<span>
+						<Icon icon={chefHat} />
+					</span>
+					Everyday
+					<span className="chef-red">Chef</span>
+				</h1>
+			</div>
 
-        <div className="head text-center col-md-8">
-          <Link to="/recipes">
-            <h1 id="logo">
-              <span id="hat">
-                <Icon icon={chefHat} />
-              </span>
-              Everyday
-              <span id="chef-red">Chef</span>
-            </h1>
-          </Link>
-        </div>
+			<div className="row text-center my-4">
+				<div className="col-md-3">
+					<Link to="/user" className="pop">
+						<h1 className="heading__link-title">
+							<Icon icon={personFill} />
+							Profile
+						</h1>
+					</Link>
+				</div>
 
-        <div
-          id="login-div"
-          className="col-md-2 position-relative container-fluid"
-        >
-          <Link to="/favorites">
-            <h1 id="favorites-h1">
-              <Icon icon={heartSolid} />
-              Favorites
-            </h1>
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+				<div className="col-md-3">
+					<Link to="/recipes" className="pop">
+						<h1 className="heading__link-title">
+							<Icon icon={baselineFoodBank} />
+							Recipes
+						</h1>
+					</Link>
+				</div>
+
+				<div className="col-md-3">
+					<Link to="/favorites" className="pop">
+						<h1 className="heading__link-title">
+							<Icon icon={heartSolid} />
+							Favorites
+						</h1>
+					</Link>
+				</div>
+
+				<div className="col-md-3">
+					<Link to="/login" className="pop">
+						<h1 className="heading__link-title">
+							<Icon icon={outlineLogin} />
+							Sign Out
+						</h1>
+					</Link>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Header;
