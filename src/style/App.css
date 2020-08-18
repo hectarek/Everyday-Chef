@@ -13,8 +13,9 @@ hr {
 }
 
 .logo {
-  font-family: Yellowtail;
+  font-family: Playball;
   color: #092242;
+  text-align: center;
 }
 
 .app-container {
@@ -33,17 +34,25 @@ hr {
   text-align: center;
 }
 
-.recipes__heading,
-.middle__heading {
-  font-size: 3rem;
-  font-family: Yellowtail;
+.recipes__heading {
+  padding-top: 28px;
+  font-size: 2.5rem;
+  font-family: Playball;
+
   color: #092242;
+}
+.middle__heading {
+  font-size: 4rem;
+  font-family: Playball;
+  text-shadow: 2px 2px 2px rgba(15, 34, 64, 1);
+  color: #d73434;
 }
 
 .ingredient__heading {
-  color: #d73434;
-  font-family: Yellowtail;
-  font-size: 3rem;
+  padding-top: 28px;
+  color: #092242;
+  font-family: Playball;
+  font-size: 2.5rem;
 }
 
 .main-row {

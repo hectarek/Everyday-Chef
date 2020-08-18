@@ -6,7 +6,7 @@
 
 .heading__link:hover {
   text-decoration: none;
-} 
+}
 
 .heading__main-title {
   font-size: 4rem;
@@ -24,12 +24,16 @@
   color: #d73434;
 }
 
+.hat-icon-red {
+  color: #d73434;
+  /* color: #092242; */
+}
+
 .heading__link-title {
   font-family: "Baloo Tamma 2", cursive;
   font-size: 28px;
   color: #092242;
 }
-
 
 @-webkit-keyframes hvr-pop {
   50% {
@@ -50,7 +54,9 @@
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
-.pop:hover, .pop:focus, .pop:active {
+.pop:hover,
+.pop:focus,
+.pop:active {
   text-decoration: none;
   -webkit-animation-name: hvr-pop;
   animation-name: hvr-pop;

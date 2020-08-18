@@ -12,7 +12,6 @@
   display: flex;
 }
 
-
 .recipes-image {
   height: 64px;
   border: 2px solid white;
@@ -24,7 +23,7 @@
 }
 
 .recipes-title {
-  color: red;
+  color: #d73434;
   font-size: 14px;
   text-align: left;
 }
