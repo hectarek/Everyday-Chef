@@ -1,5 +1,11 @@
 .recipe__item {
   display: flex;
+ 
+}
+.recipe__ingredients{
+  background-color:rgb(216,216,216);
+  padding-top:1px;
+  padding-bottom: 1px;
 }
 .recipe__icon {
   height: 1rem;

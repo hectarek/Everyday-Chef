@@ -1,22 +1,24 @@
 .shopping {
-	padding: 1rem 2rem;
+
 	display: flex;
 	flex-direction: column;
+	
 }
-.shopping__list {
-	list-style: none;
-	max-height: 77rem;
-	overflow: scroll;
+.shopping:hover{
+	background-color: lightgrey;
 }
+
+
+
 .shopping__item {
 	display: flex;
 	align-items: flex-start;
-	padding: 1.3rem 0;
-	border-bottom: 1px solid #f2efee;
+	padding: 1rem 0;
+	border: 1px solid #f2efee;
 	position: relative;
 }
 .shopping__count {
-	padding: 0.4rem 0.5rem;
+	padding: 0rem 0rem;
 	border: 1px solid #f2efee;
 	border-radius: 3px;
 	margin-right: 2rem;
@@ -24,8 +26,9 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+
 .shopping__count input {
-	color: inherit;
 	font-family: inherit;
 	font-size: 1.2rem;
 	text-align: center;
@@ -35,7 +38,7 @@
 }
 .shopping__count input:focus {
 	outline: none;
-	background-color: #f2efee;
+	/*background-color: #f2efee;*/
 }
 .shopping__count p {
 	font-size: 1rem;
@@ -52,5 +55,4 @@
 	opacity: 1;
 	visibility: visible;
 }
-
 

@@ -1,12 +1,12 @@
 import React from "react";
 import "../style/Ingredients.css";
 
-function Ingredients ({ ingredients }) {
+function Ingredients({ ingredients }) {
 	return (
-		<div>
+		<div className="shopping">
 			<li className="shopping__item">
 				<div className="shopping__count">
-					<input className="shopping__count-value" type="number" defaultValue={ingredients.count} step={ingredients.count}  />
+					<input className="shopping__count-value" type="number" defaultValue={ingredients.count} step={ingredients.count} />
 					<p>{ingredients.unit}</p>
 				</div>
 				<p className="shopping__description">{ingredients.ingredient}</p>
