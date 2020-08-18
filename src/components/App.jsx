@@ -33,8 +33,9 @@ import { Fraction } from 'fractional';
 library.add(fab, fas);
 
 const recipesApiCall = "https://everydaychef-api.herokuapp.com/recipes?q=";
-const usersApiCall = "https://everydaychef-api.herokuapp.com/signup"
-const proxy = "https://cors-anywhere.herokuapp.com/"
+const usersApiCall = "https://everydaychef-api.herokuapp.com/signup";
+const loginApiCall = "https://everydaychef-api.herokuapp.com/login";
+const proxy = "https://cors-anywhere.herokuapp.com/";
 
 function useRecipe(query) {
 	const [loading, setLoading] = useState(false);
@@ -68,6 +69,9 @@ function useRecipe(query) {
 }
 
 function App() {
+
+	// APP STATE
+
 	// State from the Query
 	const [search, setSearch] = useState("");
 	const [query, setQuery] = useState("");
@@ -92,6 +96,9 @@ function App() {
 			password: ''
 	});
 
+	const [isSignedUp, setIsSignedUp] = useState(false);
+
+	// User Login 
 	const [userLogin, setUserLogin] = useReducer(
 		(state, newState) => ({...state, ...newState}),
 		{
@@ -99,14 +106,11 @@ function App() {
 			password: ''
 		});
 	
-	
-	const [isSignedUp, setIsSignedUp] = useState(false);
-
 	// Other
 	const [modal, setModal] = useState(false);
 
 
-	// Event Handlers
+	// APP Event Handlers
 	const handleChange = (e) => {
 		setSearch(e.target.value);
 	};
@@ -145,11 +149,8 @@ function App() {
 		setSelected(true);
 	}
 
-	const getAddedToCart = () => {
-		addToShoppingCart(recipe);
-		setAddedToCart(true);
-	}
-	
+	// API End point calls
+
 	const handleSignupSubmission = (e) => {
 	
 		e.preventDefault();
@@ -175,7 +176,7 @@ function App() {
 
 		axios({
 			method: 'post',
-			url: `${proxy}${usersApiCall}`,
+			url: `${proxy}${loginApiCall}`,
 			data: {
 				userName: userLogin.userName,
 				password: userLogin.password
@@ -186,6 +187,13 @@ function App() {
 		})
 	}
 
+	// GET Methods
+
+	const getAddedToCart = () => {
+		addToShoppingCart(recipe);
+		setAddedToCart(true);
+	}
+	
 	// Render methods
 	const renderRecipes = () => {
 		return recipes.map((recipe, index) => {
@@ -202,7 +210,7 @@ function App() {
 		});
 	};
 
-	const getRecipe = (recipe) => {
+	const renderRecipe = (recipe) => {
 		return (
 		<Recipe 
 			recipe={recipe} 
@@ -211,9 +219,9 @@ function App() {
 			yield={recipe.yield} 
 			totalTime={recipe.totalTime} 
 		/>);
-  };
+  	};
 
-  	const getIngredientsList = (ingredientsList) => {
+  	const renderIngredientsList = (ingredientsList) => {
 	
 		const newIngredients = parseIngredients(ingredientsList);
 
@@ -231,7 +239,7 @@ function App() {
 		})
   	}
 
-  const getEndList = (recipe) => {
+  const renderListTag = (recipe) => {
 	  return (
 		  <ListTag 
 			  recipe={recipe}
@@ -315,7 +323,7 @@ function App() {
 			let count;
 			if(arrCount.length === 1) {
 				// Edge case, ex. 1-1/3 cup, replaces the '-' so with '+' so eval works.
-				count = eval(arrIng[0].replace('-', '+'));
+				// count = eval(arrIng[0].replace('-', '+'));
 			} else {
 				// Evaluating so that it turns the array into decimal
 				// count = eval(arrIng.slice(0, unitIndex).join('+'));
@@ -401,9 +409,9 @@ function App() {
 								</div>
 
 								<div className="col-md-5 m-2 p-2 middle-div justify-content-md-center">
-									{selected ? getRecipe(recipe) : <h1>Loading...</h1>}
-									{selected ? getIngredientsList(recipe.ingredientLines) : <h1>Loading...</h1>}
-									{selected ? getEndList(recipe) : <h1>Loading...</h1>}
+									{selected ? renderRecipe(recipe) : <h1>Loading...</h1>}
+									{selected ? renderIngredientsList(recipe.ingredientLines) : <h1>Loading...</h1>}
+									{selected ? renderListTag(recipe) : <h1>Loading...</h1>}
 								</div>
 
 								<div className="col-md-3 m-2 p-2 ingredients-div">
