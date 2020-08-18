@@ -1,8 +1,11 @@
-.recipe__item {
-    display: flex; }
+
+    .recipe__item {
+      display: flex;
+      
+    }
   .recipe__icon {
-    height: 1.8rem;
-    width: 1.8rem;
+    height: 1rem;
+    width: 1rem;
     fill: #F59A83;
     border: 1px solid #F59A83;
     border-radius: 50%;
@@ -13,3 +16,5 @@
     .recipe__count {
         margin-right: .5rem;
         flex: 0 0 auto; }
+     
+    
