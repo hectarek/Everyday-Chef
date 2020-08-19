@@ -1,6 +1,5 @@
 // Basic Imports
 import React, { useState, useEffect, useReducer } from "react";
-import { createHashHistory } from 'history';
 import { BrowserRouter as Router, Switch, Route, Redirect, useHistory } from "react-router-dom";
 import axios from 'axios';
 
@@ -17,7 +16,6 @@ import User from "./User";
 import Signup from "./Signup";
 import Favorites from "./Favorites";
 import ListTag from "./ListTag";
-import Auth from './Auth';
 
 //Import Functions
 import { formatCount, parseIngredients } from '../script/logic';
@@ -30,6 +28,8 @@ import "../style/App.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import history from '../history';
+
 
 //  =========== Beginning of Code ===========
 
@@ -38,6 +38,7 @@ library.add(fab, fas);
 const recipesApiCall = "https://everydaychef-api.herokuapp.com/recipes?q=";
 const usersApiCall = "https://everydaychef-api.herokuapp.com/signup";
 const loginApiCall = "https://everydaychef-api.herokuapp.com/login";
+const favoriteCall = "https://everydaychef-api.herokuapp.com/favorites";
 const proxy = "https://cors-anywhere.herokuapp.com/";
 
 function useRecipe(query) {
@@ -71,12 +72,20 @@ function useRecipe(query) {
 	return [results, loading];
 }
 
+const parseUser = () => {
 
-function App(props) {
+	let data = sessionStorage.getItem('user');
+	console.log(data);
+
+	let parsedUser = JSON.parse(data);
+	console.log(parsedUser);
+
+	return parsedUser;
+}
+
+function App() {
 
 	// APP STATE
-
-	const history = useHistory()
 
 	// State from the Query
 	const [search, setSearch] = useState("");
@@ -112,6 +121,8 @@ function App(props) {
 			userName: '',
 			password: ''
 		});
+
+	const [userEntity, setUserEntity] = useState({})
 	
 	// Other
 	const [modal, setModal] = useState(false);
@@ -151,13 +162,15 @@ function App(props) {
 		setQuery(search);
 	};
 
-	const handleClick = selectedRecipe => {
+	const handleClick = (e, selectedRecipe) => {
 		setRecipe(selectedRecipe);
 		setSelected(true);
 
 		if (active) {
+			// e.target.ClassName = 'recipes active';
 			setActive(false)
 		} else {
+			// e.target.className = 'recipes';
 			setActive(true);
 		}
 	}
@@ -181,6 +194,7 @@ function App(props) {
 		})
 		.then(response => {
 			console.log(response);
+			setUserEntity(response.data.user);
 		})
 		.catch(error => {
 			alert("Invalid recipe search, please try again.")
@@ -201,9 +215,16 @@ function App(props) {
 		})
 		.then(response => {
 			console.log(response);
-			console.log(response.data.status)
-			if (response.data.status === 'success') {
-				props.history.push("/recipes");
+			let user = response.data.user;
+			let status = response.status;
+			console.log(status);
+			console.log(user);
+
+			sessionStorage.setItem("user", JSON.stringify(user));
+
+			history.push("/recipes");
+			if (status === 200) {
+				
 			} else {
 				alert("Your username or password is incorrect")
 			}
@@ -211,6 +232,29 @@ function App(props) {
 		.catch(error => {
 			console.log(error);
 		})
+	}
+
+	const handleRecipeFavorite = () => {
+
+		let user = parseUser();
+		console.log(user);
+
+		console.log(recipe)
+
+		// axios({
+		// 	method: 'post',
+		// 	url: `${proxy}${favoriteCall}`,
+		// 	data: {
+		// 		userId: user.id,
+		// 		recipe: recipe
+		// 	}
+		// })
+		// .then(response => {
+		// 	console.log(response);
+		// })
+		// .catch(error => {
+		// 	console.log(error);
+		// })
 	}
 
 	// GET Methods
@@ -245,6 +289,7 @@ function App(props) {
 			image={recipe.image} 
 			yield={recipe.yield} 
 			totalTime={recipe.totalTime} 
+			handleRecipeFavorite={handleRecipeFavorite}
 		/>);
   	};
 
@@ -306,7 +351,7 @@ function App(props) {
   }
   
 	return (
-		<Router>
+		<Router history={history}>
 			<div className="container-fluid">
 				
 				<Switch>
