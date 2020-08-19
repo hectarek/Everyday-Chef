@@ -2,7 +2,7 @@ import React from "react";
 
 import "../style/Recipe.css";
 
-function Recipe({ recipe }) {
+function Recipe({ recipe, handleRecipeFavorite }) {
 	return (
 		<div className="recipe">
 			<figure className="recipe__fig">
@@ -25,7 +25,7 @@ function Recipe({ recipe }) {
 					<button className="btn btn-danger">+</button>
 					<button className="btn btn-danger">-</button>
 				</div>
-				<button className="recipe__love btn btn-danger">Heart</button>
+				<button className="recipe__love btn btn-danger" onClick={handleRecipeFavorite}>Heart</button>
 			</div>
 		</div>
 	);
