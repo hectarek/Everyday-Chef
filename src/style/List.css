@@ -1,10 +1,21 @@
+/* .recipe__ingredients {
+  column-count: 2;
+} */
+
+.recipe__ingredient-list {
+  /* margin-top: 5px; */
+}
+
+/* ul {
+  column-count: 2;
+} */
+
 .recipe__item {
   display: flex;
- 
 }
-.recipe__ingredients{
-  background-color:rgb(216,216,216);
-  padding-top:1px;
+.recipe__ingredients {
+  background-color: #eeeef1;
+  padding-top: 1px;
   padding-bottom: 1px;
 }
 
