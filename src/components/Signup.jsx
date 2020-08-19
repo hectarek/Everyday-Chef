@@ -4,7 +4,6 @@ import "../style/Signup.css"
 
 function Signup({ modal, hideModal, newUser, handleChangeSignup ,handleSignupSubmission }) {
 
-	console.log(modal);
 
 	if (!modal) {
 		return null;
