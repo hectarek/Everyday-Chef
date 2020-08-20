@@ -4,7 +4,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { Icon, InlineIcon } from "@iconify/react";
 import bxEdit from "@iconify/icons-bx/bx-edit";
 
-function User() {
+function User({user}) {
 	return (
 		
 		<div className="app-container container">
@@ -20,10 +20,10 @@ function User() {
 					</div>
 					<div className="row">
 						<div className="col-sm-3">
-							<h6>Username</h6>
+							<h6>Name</h6>
 						</div>
 						<div className="col-sm-7">
-							<h4>Ash</h4>
+							<h4>{user.firstName} {user.lastName}</h4>
 						</div>
 						<div className="col-sm-2">
 							<h6>
@@ -36,28 +36,10 @@ function User() {
 					{/* <!--section2--> */}
 					<div className="row">
 						<div className="col-sm-3">
-							<h6>Email</h6>
+							<h6>Username</h6>
 						</div>
 						<div className="col-sm-7">
-							<h4>adc@gmail.com</h4>
-						</div>
-						<div className="col-sm-2">
-							<h6>
-								Edit <Icon icon={bxEdit} />
-							</h6>
-						</div>
-					</div>
-					<hr></hr>
-					{/* <!--section3--> */}
-					<div className="row">
-						<div className="col-sm-3">
-							<h6>Favorites</h6>
-						</div>
-						<div className="col-sm-7">
-							<ul>
-								<li>Pizza</li>
-								<li>Pasta</li>
-							</ul>
+							<h4>{user.userName}</h4>
 						</div>
 						<div className="col-sm-2">
 							<h6>
@@ -69,10 +51,10 @@ function User() {
 					{/* <!--section4--> */}
 					<div className="row">
 						<div className="col-sm-3">
-							<h6>Delete</h6>
+							<h6>Email</h6>
 						</div>
 						<div className="col-sm-7">
-							<p>Check details</p>
+							<p>{user.email}</p>
 						</div>
 						<div className="col-sm-2">
 							<h6>

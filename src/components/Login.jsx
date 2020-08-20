@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { withRouter } from 'react-router';
+import auth from "./Auth";
+
 import chefHat from "@iconify/icons-mdi/chef-hat";
 
 import "../style/Login.css";
 
-function Login({ showModal, user, handleChangeLogin, handleSubmitLogin }) {
+function Login({ props, showModal, userName, password, handleChangeLogin, handleSubmitLogin }) {
   return (
     <div>
       <div className="login__title">
@@ -26,7 +28,7 @@ function Login({ showModal, user, handleChangeLogin, handleSubmitLogin }) {
               </label>
               <input
                 type="username"
-                value={user.userName}
+                value={userName}
                 className="form-control"
                 onChange={handleChangeLogin}
                 name="userName"
@@ -39,7 +41,7 @@ function Login({ showModal, user, handleChangeLogin, handleSubmitLogin }) {
               </label>
               <input
                 type="password"
-                value={user.password}
+                value={password}
                 className="form-control"
                 onChange={handleChangeLogin}
                 name="password"
@@ -47,7 +49,8 @@ function Login({ showModal, user, handleChangeLogin, handleSubmitLogin }) {
               />
             </div>
             <div className="button-div">
-              <button type="submit" className="btn btn-primary btn-lg">
+              <button 
+              type="submit" className="btn btn-primary btn-lg">
                 Submit
               </button>
             </div>
@@ -72,4 +75,4 @@ function Login({ showModal, user, handleChangeLogin, handleSubmitLogin }) {
     </div>
   );
 }
-export default Login;
+export default withRouter(Login);

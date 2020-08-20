@@ -8,14 +8,14 @@ import "../style/Favorites.css";
 import { Icon } from "@iconify/react";
 import heartSolid from "@iconify/icons-clarity/heart-solid";
 
-function Favorites({ renderFavorites }) {
+function Favorites({ renderFavorites, user }) {
 	return (
 		<div className="app-container">
 			<div id="header-div" className="row d-flex justify-content-center text-center"></div>
 
 			<div id="fave-text-div" className="row d-flex justify-content-center text-center">
 				<div id="fave-col1" className="col-md-4">
-					<h1 id="username">Andrew's</h1>
+					<h1 id="username">{user.firstName + "'s"}</h1>
 				</div>
 				<div id="fave-col2" className="col-md-4">
 					<h1 id="fav-logo">Favorites</h1>
@@ -26,8 +26,8 @@ function Favorites({ renderFavorites }) {
 			</div>
 
 			<div id="fave-main-div" className="row d-flex justify-content-center text-center">
-				<div id="main-col">
-					{renderFavorites}
+				<div id="main-col" className="row">
+					{renderFavorites()}
 				</div>
 			</div>
 		</div>
