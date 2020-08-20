@@ -14,7 +14,7 @@ function Header() {
     <div className="container header-container">
       <div className="row justify-content-md-center">
         <h1 className="heading__main-title logo">
-          <span className="hat-icon-red">
+          <span className="hat-icon-red shadow-drop-lr">
             <Icon icon={chefHat} /> <br></br>
           </span>
           Everyday

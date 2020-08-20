@@ -16,7 +16,7 @@ align-items: flex-start;
 	padding: 5px 5px;
 }
 .shopping__count {
-	padding: 0rem 0rem;
+	/*padding: 0rem 0rem;*/
 	cursor: pointer;
 	display: flex;
 	
@@ -40,7 +40,7 @@ align-items: flex-start;
 .shopping__description {
 	flex: 1;
 	font-size: 1rem;
-	padding-left: 4px;
+	float:left;
 }
 .shopping__delete {
 	visibility: hidden;
