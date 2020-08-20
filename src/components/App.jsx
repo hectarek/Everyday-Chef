@@ -1,6 +1,6 @@
 // Basic Imports
 import React, { useState, useEffect, useReducer } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, useHistory, withRouter } from "react-router-dom";
 import axios from 'axios';
 
 //Component Imports
@@ -16,6 +16,8 @@ import User from "./User";
 import Signup from "./Signup";
 import Favorites from "./Favorites";
 import ListTag from "./ListTag";
+import FavoritesTile from "./FavoritesTile";
+
 
 //Import Functions
 import { formatCount, parseIngredients } from '../script/logic';
@@ -28,7 +30,6 @@ import "../style/App.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import history from '../history';
 
 
 //  =========== Beginning of Code ===========
@@ -122,7 +123,7 @@ function App() {
 			password: ''
 		});
 
-	const [userEntity, setUserEntity] = useState({})
+	const [favorites, setFavorites] = useState([])
 	
 	// Other
 	const [modal, setModal] = useState(false);
@@ -194,7 +195,6 @@ function App() {
 		})
 		.then(response => {
 			console.log(response);
-			setUserEntity(response.data.user);
 		})
 		.catch(error => {
 			alert("Invalid recipe search, please try again.")
@@ -222,9 +222,8 @@ function App() {
 
 			sessionStorage.setItem("user", JSON.stringify(user));
 
-			history.push("/recipes");
 			if (status === 200) {
-				
+
 			} else {
 				alert("Your username or password is incorrect")
 			}
@@ -239,22 +238,25 @@ function App() {
 		let user = parseUser();
 		console.log(user);
 
-		console.log(recipe)
+		const input = recipe.label;
+		const newValue = recipe;
 
-		// axios({
-		// 	method: 'post',
-		// 	url: `${proxy}${favoriteCall}`,
-		// 	data: {
-		// 		userId: user.id,
-		// 		recipe: recipe
-		// 	}
-		// })
-		// .then(response => {
-		// 	console.log(response);
-		// })
-		// .catch(error => {
-		// 	console.log(error);
-		// })
+		setFavorites({[input]: newValue});
+
+		axios({
+			method: 'post',
+			url: `${proxy}${favoriteCall}`,
+			data: {
+				userId: user.id,
+				recipe: recipe
+			}
+		})
+		.then(response => {
+			console.log(response);
+		})
+		.catch(error => {
+			console.log(error);
+		})
 	}
 
 	// GET Methods
@@ -349,9 +351,22 @@ function App() {
 		<div className="loader my-5"><div></div><div></div><div></div><div></div></div>
 	  )
   }
+
+  const renderFavorites = () => {
+	  return favorites.map((recipe, index) => {
+		return (
+			<FavoritesTile
+				key={index}
+				recipe={recipe}
+				image={recipe.image}
+				label={recipe.label} 
+			/>)
+	  	}  
+	  )
+  }
   
 	return (
-		<Router history={history}>
+		<Router>
 			<div className="container-fluid">
 				
 				<Switch>
@@ -418,7 +433,9 @@ function App() {
 
 					<Route path="/favorites">
 						<Header />
-						<Favorites />
+						<Favorites
+							render={renderFavorites}
+						/>
 					</Route>
 
 					<Route path="/">
@@ -435,4 +452,7 @@ function App() {
 	);
 }
 
-export default App
+export default App;
+
+
+

@@ -5,10 +5,10 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/Favorites.css";
 
-import { Icon, InlineIcon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import heartSolid from "@iconify/icons-clarity/heart-solid";
 
-function Favorites() {
+function Favorites({ renderFavorites }) {
 	return (
 		<div className="app-container">
 			<div id="header-div" className="row d-flex justify-content-center text-center"></div>
@@ -27,7 +27,7 @@ function Favorites() {
 
 			<div id="fave-main-div" className="row d-flex justify-content-center text-center">
 				<div id="main-col">
-					<h1>test</h1>
+					{renderFavorites}
 				</div>
 			</div>
 		</div>

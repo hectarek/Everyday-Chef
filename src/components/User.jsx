@@ -6,6 +6,7 @@ import bxEdit from "@iconify/icons-bx/bx-edit";
 
 function User() {
 	return (
+		
 		<div className="app-container container">
 			<div className="row">
 				{/* <!--Details info--> */}
