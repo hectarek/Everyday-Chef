@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router';
+import auth from "./Auth";
 
 import "../style/Header.css";
 import { Icon } from "@iconify/react";
@@ -9,7 +11,7 @@ import outlineLogin from "@iconify/icons-ic/outline-login";
 import baselineFoodBank from "@iconify/icons-ic/baseline-food-bank";
 import personFill from "@iconify/icons-bi/person-fill";
 
-function Header() {
+function Header(props) {
   return (
     <div className="container header-container">
       <div className="row justify-content-md-center">
@@ -51,18 +53,23 @@ function Header() {
         </div>
 
         <div className="col-md-3">
-          <Link to="/login" className="pop">
+          <button onClick={() => {
+            auth.logout(() => {
+              props.history.push("/")
+            })
+          }} 
+          className="pop">
             <h1 className="heading__link-title">
               <Icon icon={outlineLogin} />
               Sign Out
             </h1>
-          </Link>
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-export default Header;
+export default withRouter(Header);
 
 // test

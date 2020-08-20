@@ -1,16 +1,17 @@
 .recipes {
 	width: 100%;
 	margin-top: 1em;
+<<<<<<< HEAD
   margin-bottom: 1em;
   padding: 1em 1em;
+=======
+	margin-bottom: 1em;
+	padding: 1em 1em;
+>>>>>>> 52560d9486d073142dff187a92bc63b643d4027e
 }
 
 .recipes:hover {
 	background-color: lightgrey;
-}
-
-.active {
-  background-color: lightgrey;
 }
 
 .recipes-container {
@@ -18,8 +19,8 @@
 }
 
 .recipes-image {
-	height: 64px;
-	border: 2px solid white;
+	height: 65px;
+	border: 2px solid grey;
 	border-radius: 50%;
 }
 
@@ -29,12 +30,12 @@
 
 .recipes-title {
 	color: red;
-	font-size: 14px;
+	font-size: 17px;
 	text-align: left;
 }
 
 .recipes-publisher {
 	color: black;
-	font-size: 12px;
+	font-size: 14px;
 	text-align: left;
 }

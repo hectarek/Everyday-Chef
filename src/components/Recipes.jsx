@@ -3,7 +3,7 @@ import React from "react";
 import "../style/Recipes.css";
 import { limitRecipeTitle } from '../script/logic';
 
-function Recipes({ recipe ,handleClick }) {
+function Recipes({ recipe, handleClick }) {
   return (
     <div className="recipes" onClick={(e) => handleClick(e, recipe)}>
       <div className="recipes-container">
