@@ -58,7 +58,7 @@ function Header(props) {
               props.history.push("/")
             })
           }} 
-          className="pop">
+          className="signout pop">
             <h1 className="heading__link-title">
               <Icon icon={outlineLogin} />
               Sign Out

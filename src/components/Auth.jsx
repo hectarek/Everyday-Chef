@@ -3,6 +3,10 @@ class Auth {
         this.authenticated = false;
     }
 
+    isAuthenticated() {
+        return this.authenticated;
+    }
+
     login(cb) {
         this.authenticated = true;
         cb()
@@ -12,10 +16,7 @@ class Auth {
         this.authenticated = false;
         cb();
     }
-
-    isAuthenticated() {
-        return this.authenticated;
-    }
+    
 }
 
 export default new Auth();
