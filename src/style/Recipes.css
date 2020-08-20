@@ -1,13 +1,8 @@
 .recipes {
 	width: 100%;
 	margin-top: 1em;
-<<<<<<< HEAD
-  margin-bottom: 1em;
-  padding: 1em 1em;
-=======
 	margin-bottom: 1em;
 	padding: 1em 1em;
->>>>>>> 52560d9486d073142dff187a92bc63b643d4027e
 }
 
 .recipes:hover {

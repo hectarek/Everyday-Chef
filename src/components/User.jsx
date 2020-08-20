@@ -1,7 +1,5 @@
 import React from "react";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-// npm install --save-dev @iconify/react @iconify/icons-bx
-import { Icon, InlineIcon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import bxEdit from "@iconify/icons-bx/bx-edit";
 
 function User({ user }) {

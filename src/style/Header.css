@@ -35,6 +35,11 @@
   color: #092242;
 }
 
+.signout {
+  border: none;
+  background-color: white;
+}
+
 @-webkit-keyframes hvr-pop {
   50% {
     -webkit-transform: scale(1.2);

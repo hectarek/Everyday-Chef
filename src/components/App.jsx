@@ -1,6 +1,7 @@
 // Basic Imports
 import React, { useState, useEffect, useReducer } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { withRouter } from 'react-router';
+import { Switch, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 
 //Component Imports
@@ -15,6 +16,8 @@ import LoginPage from "./LoginPage";
 import UserPage from "./UserPage";
 import RecipesPage from "./RecipesPage";
 import FavoritesPage from "./FavoritesPage";
+import { ProtectedRoute } from './ProtectedRoute';
+import auth from './Auth';
 
 //Import Functions
 import { formatCount, parseIngredients } from "../script/logic";
@@ -69,17 +72,7 @@ function useRecipe(query) {
 	return [results, loading];
 }
 
-const parseUser = () => {
-	let data = sessionStorage.getItem("user");
-	console.log(data);
-
-	let parsedUser = JSON.parse(data);
-	console.log(parsedUser);
-
-	return parsedUser;
-};
-
-function App() {
+function App(props) {
 	// APP STATE
 
 	// State from the Query
@@ -232,14 +225,17 @@ function App() {
 		.then((response) => {
 			console.log(response);
 			let user = response.data.user;
-			let status = response.status;
+			let status = response.data.status;
 			console.log(status);
 			console.log(user);
 
-			if (status === 200) {
-				sessionStorage.setItem("UserID", user.id)
+			if (status === "success") {
+				sessionStorage.setItem("UserID", user.id);
+				auth.login(() => {
+					props.history.push("/recipes");
+				});
 			} else {
-					alert("Your username or password is incorrect");
+				alert("Username or password is incorrect!")
 			}
 		})
 		.catch((error) => {
@@ -248,19 +244,14 @@ function App() {
 	};
 
 	const handleRecipeFavorite = () => {
-		let user = parseUser();
-		console.log(user);
-
-		const input = recipe.label;
-		const newValue = recipe;
-
-		setFavorites({ [input]: newValue });
+		
+		let userId = parseInt(sessionStorage.getItem("UserID"));
 
 		axios({
 			method: "post",
 			url: `${proxy}${favoriteCall}`,
 			data: {
-				userId: user.id,
+				userId: userId,
 				recipe: recipe,
 			},
 		})
@@ -358,7 +349,7 @@ function App() {
 					 />
 				</Route>
 
-				<Route path="/recipes" component={RecipesPage}>
+				<ProtectedRoute path="/recipes" component={RecipesPage}>
 					<RecipesPage 
 						search={search} 
 						handleChange={handleChange} 
@@ -374,7 +365,7 @@ function App() {
 						addedToCart={addedToCart} 
 						renderShoppingCart={renderShoppingCart} 
 						/>
-				</Route>
+				</ProtectedRoute>
 
 				<Route path="/favorites" component={FavoritesPage}>
 					<FavoritesPage 
@@ -397,4 +388,4 @@ function App() {
 	);
 }
 
-export default App;
+export default withRouter(App);

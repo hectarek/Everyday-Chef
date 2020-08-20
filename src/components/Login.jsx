@@ -1,20 +1,11 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import { withRouter } from "react-router";
-import auth from "./Auth";
-
+import { withRouter } from 'react-router';
 import chefHat from "@iconify/icons-mdi/chef-hat";
 
 import "../style/Login.css";
 
-function Login({
-  props,
-  showModal,
-  userName,
-  password,
-  handleChangeLogin,
-  handleSubmitLogin,
-}) {
+function Login({ showModal, userName, password, handleChangeLogin, handleSubmitLogin }) {
   return (
     <div>
       <div className="login__title">
