@@ -7,6 +7,10 @@
   font-size: 4rem;
 }
 
+.red-chef {
+  color: red;
+}
+
 .login__title {
   text-align: center;
   margin: 1rem;
