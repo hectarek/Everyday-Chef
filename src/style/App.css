@@ -6,7 +6,6 @@
 
 body {
   background-color: white;
-  max-width: 85em;
   margin: auto;
 }
 
@@ -25,7 +24,9 @@ hr {
   border-color: #d73434;
   border-width: 6px;
   min-width: 35em;
+  max-width: 85em;
   height: auto;
+  margin: auto;
 
   -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.61);
   -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.61);
