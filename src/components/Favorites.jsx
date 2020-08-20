@@ -15,7 +15,7 @@ function Favorites({ renderFavorites, user }) {
 
 			<div id="fave-text-div" className="row d-flex justify-content-center text-center">
 				<div id="fave-col1" className="col-md-4">
-					<h1 id="username">{user.firstName + "'s"}</h1>
+					<h1 id="username">{user.firstName}</h1>
 				</div>
 				<div id="fave-col2" className="col-md-4">
 					<h1 id="fav-logo">Favorites</h1>

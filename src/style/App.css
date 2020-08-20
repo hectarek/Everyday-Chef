@@ -68,23 +68,24 @@ hr {
 
 .recipes-div {
   text-align: center;
-  max-height: 80em;
+  max-height: 50em;
   overflow: scroll;
   border: 2.25px solid #092242;
-  min-height: 73.5em;
+  min-height: 20em;
 }
 
 .middle-div {
   text-align: center;
   border: 2.25px solid #092242;
+  min-height: 50em;
 }
 
 .ingredients-div {
   text-align: center;
-  max-height: 80em;
+  max-height: 50em;
   overflow: scroll;
   border: 2.25px solid #092242;
-  min-height: 73.5em;
+  min-height: 20em;
 }
 
 .footer-div {

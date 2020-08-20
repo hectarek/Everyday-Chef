@@ -259,6 +259,7 @@ function App(props) {
 		})
 			.then((response) => {
 				console.log(response);
+				alert("This recipe has been added to your favorites!")
 			})
 			.catch((error) => {
 				console.log(error);
