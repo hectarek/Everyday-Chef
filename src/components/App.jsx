@@ -204,6 +204,8 @@ function App(props) {
 		})
 			.then((response) => {
 				console.log(response);
+				hideModal();
+				alert("Signup successful!")
 			})
 			.catch((error) => {
 				alert("Invalid recipe search, please try again.");

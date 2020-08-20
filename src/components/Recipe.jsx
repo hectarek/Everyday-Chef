@@ -1,4 +1,6 @@
 import React from "react";
+import { Icon } from "@iconify/react";
+import heartSolid from "@iconify/icons-clarity/heart-solid";
 
 import "../style/Recipe.css";
 
@@ -8,7 +10,7 @@ function Recipe({ recipe, handleRecipeFavorite }) {
 			<figure className="recipe__fig">
 				<img src={recipe.image} alt={recipe.label} className="recipe__img" />
 				<h1 className="recipe__title">
-					<span>{recipe.label}</span>
+					<span className="recipe__title-span">{recipe.label}</span>
 				</h1>
 			</figure>
 			<div className="recipe__details">
@@ -21,11 +23,7 @@ function Recipe({ recipe, handleRecipeFavorite }) {
 					<span className="recipe__info-text"> servings</span>
 				</div>
 
-				<div className="recipe__info-buttons">
-					<button className="btn btn-danger">+</button>
-					<button className="btn btn-danger">-</button>
-				</div>
-				<button className="recipe__love btn btn-danger" onClick={handleRecipeFavorite}>Heart</button>
+				<button className="recipe__love btn btn-danger" onClick={handleRecipeFavorite}><Icon icon={heartSolid} /></button>
 			</div>
 		</div>
 	);

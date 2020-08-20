@@ -72,10 +72,18 @@ export const parseIngredients = (ingredients) => {
 			let count;
 			if(arrCount.length === 1) {
 				// Edge case, ex. 1-1/3 cup, replaces the '-' so with '+' so eval works.
-				// count = eval(arrIng[0].replace('-', '+'));
+				try {
+					count = eval(arrIng[0].replace('-', '+'));
+				} catch (error) {
+					console.log(error);
+				}
 			} else {
 				// Evaluating so that it turns the array into decimal
-				// count = eval(arrIng.slice(0, unitIndex).join('+'));
+				try {
+					count = eval(arrIng.slice(0, unitIndex).join('+'));
+				} catch (error) {
+					console.log(error);
+				}
 			}
 
 			// Final object to return the correct 

@@ -56,7 +56,7 @@ function Signup({ modal, hideModal, newUser, handleChangeSignup ,handleSignupSub
 										<span className="fa fa-key" id="em1"></span>
 										Password
 									</label>
-									<input type="text" value={newUser.password} onChange={handleChangeSignup} className="form-control" name="password" placeholder="Enter password" />
+									<input type="password" value={newUser.password} onChange={handleChangeSignup} className="form-control" name="password" placeholder="Enter password" />
 								</div>
 								
 								<button type="submit" className="btn btn-success btn-block">
