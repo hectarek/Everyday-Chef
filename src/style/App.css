@@ -67,7 +67,7 @@ hr {
 
 .recipes-div {
   text-align: center;
-  max-height: 100em;
+  max-height: 80em;
   overflow: scroll;
   border: 2.25px solid #092242;
   min-height: 73.5em;
@@ -80,7 +80,7 @@ hr {
 
 .ingredients-div {
   text-align: center;
-  max-height: 100em;
+  max-height: 80em;
   overflow: scroll;
   border: 2.25px solid #092242;
   min-height: 73.5em;

@@ -1,13 +1,20 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import { withRouter } from 'react-router';
+import { withRouter } from "react-router";
 import auth from "./Auth";
 
 import chefHat from "@iconify/icons-mdi/chef-hat";
 
 import "../style/Login.css";
 
-function Login({ props, showModal, userName, password, handleChangeLogin, handleSubmitLogin }) {
+function Login({
+  props,
+  showModal,
+  userName,
+  password,
+  handleChangeLogin,
+  handleSubmitLogin,
+}) {
   return (
     <div>
       <div className="login__title">
@@ -15,7 +22,7 @@ function Login({ props, showModal, userName, password, handleChangeLogin, handle
           <Icon icon={chefHat} />
         </div>
         <h1 className="logo">
-          EveryDay <span>Chef</span>
+          EveryDay<span className="red-chef">Chef</span>
         </h1>
       </div>
       <div className="row login-container">
@@ -49,8 +56,7 @@ function Login({ props, showModal, userName, password, handleChangeLogin, handle
               />
             </div>
             <div className="button-div">
-              <button 
-              type="submit" className="btn btn-primary btn-lg">
+              <button type="submit" className="btn btn-primary btn-lg">
                 Submit
               </button>
             </div>
